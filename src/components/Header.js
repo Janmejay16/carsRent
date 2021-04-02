@@ -18,17 +18,16 @@ const HeadElem = styled.div`
         height: 100vh;
 
         .search {
-            width: 30%;
-            margin: 40vh auto 0 60vw;
+            width: 40%;
+            margin: 30vh auto 0 55vw;
             display: flex;
             align-items: center;
             text-align: center;
             justify-content: center;
-            border: 3px solid #ffa900;
             background: rgba(0,0,0,0.4);
             padding: 0;
             .icon {
-                width: 15%;
+                width: 10%;
                 color: white;
             }
             select {
@@ -45,11 +44,21 @@ const HeadElem = styled.div`
         flex-direction: row;
         align-items: center;
         .filter {
+            border-right: 3px solid #ffa900;
+            padding: 0 2vw;
             width: 20%;
             margin: 2vw 0;
+            .item {
+                margin: 3vw auto;
+                h5 {
+                    margin: 1vw auto;
+                }
+                .check {
+                    margin: 0.5vw auto;
+                }
+            }
         }
         .cars {
-            border-left: 3px solid #ffa900;
             width: 80%;
             margin: 2vw 0;
             display: flex;
@@ -68,6 +77,7 @@ const HeadElem = styled.div`
                 .image {
                     width: 100;
                     img {
+                        height: 25vh;
                         width: 100%;
                         border-top-left-radius: 10px;
                         border-top-right-radius: 10px;
@@ -139,7 +149,7 @@ const Header = () => {
                             <input id="fourwheeler" name="fourwheeler" type="checkbox"/>
                         </div>
                     </div>
-                    <div className="item">
+                    <div style={{borderTop: "2px solid black"}} className="item">
                         <h5>2-Wheeler Models</h5>
                         <div className="check">
                             <label for="activa">Activa 5G</label>
@@ -158,7 +168,7 @@ const Header = () => {
                             <input id="bullet" name="bullet" type="checkbox"/>
                         </div>
                     </div>
-                    <div className="item">
+                    <div style={{borderTop: "2px solid black"}} className="item">
                         <h5>4-Wheeler Models</h5>
                         <div className="check">
                             <label for="wagonr">WagonR</label>
@@ -193,7 +203,7 @@ const Header = () => {
                             <input id="jeep" name="jeep" type="checkbox"/>
                         </div>
                     </div>
-                    <div className="item">
+                    <div style={{borderTop: "2px solid black"}} className="item">
                         <h5>Number of Seats</h5>
                         <div className="check">
                             <label for="five">Five</label>

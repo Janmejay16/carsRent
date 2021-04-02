@@ -1,4 +1,5 @@
 import Header from './components/Header'
+import SignUpIn from './components/SignUpIn'
 
 function App() {
   return (
