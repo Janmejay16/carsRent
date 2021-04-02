@@ -75,9 +75,9 @@ const HeadElem = styled.div`
                 border-radius: 10px;
                 border: 1px solid black;
                 .image {
-                    width: 100;
+                    width: 100%;
                     img {
-                        height: 25vh;
+                        max-height: 25vh;
                         width: 100%;
                         border-top-left-radius: 10px;
                         border-top-right-radius: 10px;
@@ -128,7 +128,7 @@ const Header = () => {
                         <FontAwesomeIcon icon={faSearchLocation} />
                     </div>
                     <select name="location" id="location">
-                        <option value="">Location</option>
+                        <option value="" disabled>Location</option>
                         <option value="ahmedabad">Ahmedabad</option>
                         <option value="goa">Goa</option>
                         <option value="mumbai">Mumbai</option>
