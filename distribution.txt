@@ -1,0 +1,81 @@
+Devanshi :
+    About Us
+    Contact
+    Terms and Conditions
+    Services
+    Bill
+Janmejay : 
+    Home Page
+    Forms
+    FAQs
+    Notifications
+    Payment Gateway
+-----------------------------------------------------------------
+Frontend :
+    •	Home Page
+        o	Navigation Bar
+            	Sign-up/Sign-in
+            	About Us
+            	Contact
+            	Services
+            	FAQs
+            	Terms and Conditions
+        o	Search Bar (Location), Cars List
+        o	Filter Section
+        o	Footer
+    •	About Us Page
+    •	Our Services
+    •	FAQs [5-10 Questions]
+    •	Terms and Conditions
+    •	Contact
+    •	Forms
+        o	Sign Up (as a User or as a vehicle Owner)
+        o	Sign In
+        o	Profile Setup for Seller [Includes documents for verification for the vehicle]
+        o	Profile Setup for Normal User
+    •	Profile Page [After Login] for Normal User
+    •	Profile Page for Vehicle Owner
+    •	Vehicle Details Page (Without Owner’s name)
+    •	My Orders : Generated Bill
+    •	Notifications
+    •	Payment Gateway
+-----------------------------------------------------------------
+Backend :
+    •	Sign Up
+    •	Sign In
+    •	Authentication, JWT Sessions for Login
+    •	Profile Set Up (Edit option too) for Seller
+    •	Profile Set Up (Edit option too) for Normal User
+    •	Profile Page
+    •	Cars List Display
+    •	Notifications for the approval
+    •	Email For Contact details after payment
+
+-----------------------------------------------------------------
+Functioning and Flow :
+
+********************
+Normal User :
+********************
+    1.	Sign Up
+    2.	Set up his profile
+    3.	Redirect to Home Page
+    4.	Search and Filter for a vehicle as per his/her requirements
+    5.	Click on a vehicle
+    6.	Opens a new page with vehicle details
+    7.	Click “Enquire Now” button – Sends a request to the vehicle Owner
+    8.	On accepting the request by the owner, add the expense and show the bill in notifications/messages.
+    9.	Pay the Bill and both the users receive each other’s contact details via email
+
+********************
+Car Owner :
+********************
+    1.	Sign Up
+    2.	Set up his profile
+    3.	Verify his vehicle
+    4.	Redirect to Home Page
+    5.	When a user Clicks “Enquire Now” button – It sends a request to the vehicle Owner
+    6.	Accept or Decline the request
+    7.	After accepting, the other user receives a bill
+    8.	When the other user pays the Bill, both the users receive each other’s contact details via email
+-----------------------------------------------------------------
