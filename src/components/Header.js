@@ -5,7 +5,14 @@ import header from '../images/header.png'
 import Navbar from './Navbar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
-import amaze from '../images/amaze.jpg'
+import datson from '../images/datsun.png'
+import wagonr from '../images/wagonr.png'
+import jeep from '../images/jeep.png'
+import suv from '../images/suv.png'
+import muv from '../images/muv.png'
+import i10 from '../images/i10.png'
+import ignis from '../images/ignis.png'
+import sedan from '../images/sedan.png'
 import Footer from './Footer'
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
@@ -37,7 +44,7 @@ const HeadElem = styled.div`
     section {
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: top;
         .filter {
             border-right: 3px solid #ffa900;
             padding: 0 2vw;
@@ -54,25 +61,26 @@ const HeadElem = styled.div`
             }
         }
         .cars {
+            height: 0;
             width: 80%;
             margin: 2vw 0;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
             .item {
-                width: 27%;
+                width: 22%;
                 margin: 1vw auto;
                 display: flex;
                 flex-direction: column;
-                padding: 0;
+                padding: 0 0 1vw 0;
                 border-radius: 10px;
                 border: 1px solid black;
                 .image {
                     width: 100%;
+                    margin-bottom: 1vw;
                     img {
-                        max-height: 25vh;
+                        height: 25vh;
                         width: 100%;
                         border-top-left-radius: 10px;
                         border-top-right-radius: 10px;
@@ -86,7 +94,7 @@ const HeadElem = styled.div`
                     color: #666;
                     span {
                         display: inline-block;
-                        width: 40%;
+                        width: 50%;
                         color: black;
                     }
                 }
@@ -121,6 +129,89 @@ const Header = () => {
         setLocation(e.target.value)
     }
 
+    const [cars,setCars] = useState([
+            {
+                    "name": "WagonR",
+                    "rent": "800",
+                    "seats": "5",
+                    "mileage": "18",
+                    "fuel": "petrol",
+                    "type": "compact",
+                    "location": "vadodara",
+                    "image": wagonr
+            },
+            {
+                    "name": "DatsonGo",
+                    "rent": "800",
+                    "seats": "5",
+                    "mileage": "19",
+                    "fuel": "perol",
+                    "type": "compact",
+                    "location": "leh",
+                    "image": datson
+            },
+            {
+                    "name": "i10Grand",
+                    "rent": "1200",
+                    "seats": "5",
+                    "mileage": "16",
+                    "fuel": "petrol",
+                    "type": "compact",
+                    "location": "ladakh",
+                    "image": i10
+            },
+            {
+                    "name": "ignis",
+                    "rent": "1000",
+                    "seats": "5",
+                    "mileage": "19",
+                    "fuel": "petrol",
+                    "type": "compact",
+                    "location": "goa",
+                    "image": ignis
+            },
+            {
+                    "name": "sedan",
+                    "rent": "1400",
+                    "seats": "5",
+                    "mileage": "19",
+                    "fuel": "diesel",
+                    "type": "sedan",
+                    "location": "udaipur",
+                    "image": sedan
+            },
+            {
+                    "name": "suv",
+                    "rent": "2000",
+                    "seats": "7",
+                    "mileage": "8",
+                    "fuel": "diesel",
+                    "type": "suv",
+                    "location": "ladakh",
+                    "image": suv
+            },
+            {
+                    "name": "muv",
+                    "rent": "2500",
+                    "seats": "8",
+                    "mileage": "10",
+                    "fuel": "diesel",
+                    "type": "muv",
+                    "location": "leh",
+                    "image": muv
+            },
+            {
+                "name": "jeep",
+                "rent": "2000",
+                "seats": "6",
+                "mileage": "12",
+                "fuel": "diesel",
+                "type": "jeep",
+                "location": "goa",
+                "image": jeep
+        }
+        ])
+
     return(
         <HeadElem>
             <div className="header">
@@ -133,10 +224,11 @@ const Header = () => {
                             name="location"
                             onChange={handleInput}
                         >
-                            <MenuItem value={"ahmedabad"}>Ahmedabad</MenuItem>
-                            <MenuItem value={"goa"}>Goa</MenuItem>
-                            <MenuItem value={"mumbai"}>Mumbai</MenuItem>
                             <MenuItem value={"vadodara"}>Vadodara</MenuItem>
+                            <MenuItem value={"goa"}>Goa</MenuItem>
+                            <MenuItem value={"udaipur"}>Udaipur</MenuItem>
+                            <MenuItem value={"leh"}>Leh</MenuItem>
+                            <MenuItem value={"ladakh"}>Ladakh</MenuItem>
                         </Select>
                     </FormControl>
                 </div>
@@ -229,114 +321,22 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="cars">
-                    <div className="item">
-                        <div className="image">
-                            <img src={amaze} />
-                        </div>
-                        <h1 className="name"><span>Model :</span> Honda Amaze</h1>
-                        <h3 className="charges"><span>Rent per day :</span> 1500</h3>
-                        <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
-                        <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
-                        <h3 className="type"><span>Car Type :</span> Sedan</h3>
-                        <h4 className="location"><span>Location :</span> Vadodara</h4>
-                    </div>
-                    <div className="item">
-                        <div className="image">
-                            <img src={amaze} />
-                        </div>
-                        <h1 className="name"><span>Model :</span> Honda Amaze</h1>
-                        <h3 className="charges"><span>Rent per day :</span> 1500</h3>
-                        <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
-                        <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
-                        <h3 className="type"><span>Car Type :</span> Sedan</h3>
-                        <h4 className="location"><span>Location :</span> Vadodara</h4>
-                    </div>
-                    <div className="item">
-                        <div className="image">
-                            <img src={amaze} />
-                        </div>
-                        <h1 className="name"><span>Model :</span> Honda Amaze</h1>
-                        <h3 className="charges"><span>Rent per day :</span> 1500</h3>
-                        <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
-                        <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
-                        <h3 className="type"><span>Car Type :</span> Sedan</h3>
-                        <h4 className="location"><span>Location :</span> Vadodara</h4>
-                    </div>
-                    <div className="item">
-                        <div className="image">
-                            <img src={amaze} />
-                        </div>
-                        <h1 className="name"><span>Model :</span> Honda Amaze</h1>
-                        <h3 className="charges"><span>Rent per day :</span> 1500</h3>
-                        <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
-                        <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
-                        <h3 className="type"><span>Car Type :</span> Sedan</h3>
-                        <h4 className="location"><span>Location :</span> Vadodara</h4>
-                    </div>
-                    <div className="item">
-                        <div className="image">
-                            <img src={amaze} />
-                        </div>
-                        <h1 className="name"><span>Model :</span> Honda Amaze</h1>
-                        <h3 className="charges"><span>Rent per day :</span> 1500</h3>
-                        <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
-                        <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
-                        <h3 className="type"><span>Car Type :</span> Sedan</h3>
-                        <h4 className="location"><span>Location :</span> Vadodara</h4>
-                    </div>
-                    <div className="item">
-                        <div className="image">
-                            <img src={amaze} />
-                        </div>
-                        <h1 className="name"><span>Model :</span> Honda Amaze</h1>
-                        <h3 className="charges"><span>Rent per day :</span> 1500</h3>
-                        <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
-                        <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
-                        <h3 className="type"><span>Car Type :</span> Sedan</h3>
-                        <h4 className="location"><span>Location :</span> Vadodara</h4>
-                    </div>
-                    <div className="item">
-                        <div className="image">
-                            <img src={amaze} />
-                        </div>
-                        <h1 className="name"><span>Model :</span> Honda Amaze</h1>
-                        <h3 className="charges"><span>Rent per day :</span> 1500</h3>
-                        <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
-                        <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
-                        <h3 className="type"><span>Car Type :</span> Sedan</h3>
-                        <h4 className="location"><span>Location :</span> Vadodara</h4>
-                    </div>
-                    <div className="item">
-                        <div className="image">
-                            <img src={amaze} />
-                        </div>
-                        <h1 className="name"><span>Model :</span> Honda Amaze</h1>
-                        <h3 className="charges"><span>Rent per day :</span> 1500</h3>
-                        <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
-                        <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
-                        <h3 className="type"><span>Car Type :</span> Sedan</h3>
-                        <h4 className="location"><span>Location :</span> Vadodara</h4>
-                    </div>
-                    <div className="item">
-                        <div className="image">
-                            <img src={amaze} />
-                        </div>
-                        <h1 className="name"><span>Model :</span> Honda Amaze</h1>
-                        <h3 className="charges"><span>Rent per day :</span> 1500</h3>
-                        <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
-                        <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
-                        <h3 className="type"><span>Car Type :</span> Sedan</h3>
-                        <h4 className="location"><span>Location :</span> Vadodara</h4>
-                    </div>
+                    {cars.map((car,index) => (
+                            <div className="item">
+                                <div className="image">
+                                    <img src={car.image} />
+                                </div>
+                                <h1 className="name"><span>Model :</span>{car.name}</h1>
+                                <h3 className="charges"><span>Rent per day :</span> {car.rent}</h3>
+                                <h3 className="seats"><span>Seats :</span> {car.seats}</h3>
+                                <h3 className="mileage"><span>Mileage :</span> {car.mileage}</h3>
+                                <h3 className="fuel"><span>Fuel Type :</span> {car.fuel}</h3>
+                                <h3 className="type"><span>Car Type :</span> {car.type}</h3>
+                                <h4 className="location"><span>Location :</span> {car.location}</h4>
+                            </div>
+                        )
+                    )
+                    }          
                 </div>
             </section>
             <Footer />

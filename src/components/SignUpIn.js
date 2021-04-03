@@ -310,10 +310,11 @@ const SignUpIn = () => {
                             name="location"
                             onChange={handleInput}
                         >
-                            <MenuItem value={"ahmedabad"}>Ahmedabad</MenuItem>
-                            <MenuItem value={"goa"}>Goa</MenuItem>
-                            <MenuItem value={"mumbai"}>Mumbai</MenuItem>
                             <MenuItem value={"vadodara"}>Vadodara</MenuItem>
+                            <MenuItem value={"goa"}>Goa</MenuItem>
+                            <MenuItem value={"udaipur"}>Udaipur</MenuItem>
+                            <MenuItem value={"leh"}>Leh</MenuItem>
+                            <MenuItem value={"ladakh"}>Ladakh</MenuItem>
                         </Select>
                     </FormControl>
 
