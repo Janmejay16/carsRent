@@ -6,8 +6,8 @@ Devanshi :
     Bill
 Janmejay : 
     // Home Page
-    Forms
-    FAQs
+    // Forms
+    // FAQs
     Notifications
     Payment Gateway
 -----------------------------------------------------------------

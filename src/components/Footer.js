@@ -8,7 +8,7 @@ const FooterElem = styled.footer`
     padding: 2vw 0;
     width: 100%;
     margin: 0 auto;
-    background: #ffa900;
+    background: rgba(0,0,0,0.2);
     background-size: cover;
     background-repeat: no-repeat;
     .top {

@@ -231,7 +231,7 @@ const Header = () => {
                         <h1 className="name"><span>Model :</span> Honda Amaze</h1>
                         <h3 className="charges"><span>Rent per day :</span> 1500</h3>
                         <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Milega :</span> 15</h3>
+                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
                         <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
                         <h3 className="type"><span>Car Type :</span> Sedan</h3>
                         <h4 className="location"><span>Location :</span> Vadodara</h4>
@@ -243,7 +243,7 @@ const Header = () => {
                         <h1 className="name"><span>Model :</span> Honda Amaze</h1>
                         <h3 className="charges"><span>Rent per day :</span> 1500</h3>
                         <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Milega :</span> 15</h3>
+                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
                         <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
                         <h3 className="type"><span>Car Type :</span> Sedan</h3>
                         <h4 className="location"><span>Location :</span> Vadodara</h4>
@@ -255,7 +255,7 @@ const Header = () => {
                         <h1 className="name"><span>Model :</span> Honda Amaze</h1>
                         <h3 className="charges"><span>Rent per day :</span> 1500</h3>
                         <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Milega :</span> 15</h3>
+                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
                         <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
                         <h3 className="type"><span>Car Type :</span> Sedan</h3>
                         <h4 className="location"><span>Location :</span> Vadodara</h4>
@@ -267,7 +267,7 @@ const Header = () => {
                         <h1 className="name"><span>Model :</span> Honda Amaze</h1>
                         <h3 className="charges"><span>Rent per day :</span> 1500</h3>
                         <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Milega :</span> 15</h3>
+                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
                         <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
                         <h3 className="type"><span>Car Type :</span> Sedan</h3>
                         <h4 className="location"><span>Location :</span> Vadodara</h4>
@@ -279,7 +279,7 @@ const Header = () => {
                         <h1 className="name"><span>Model :</span> Honda Amaze</h1>
                         <h3 className="charges"><span>Rent per day :</span> 1500</h3>
                         <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Milega :</span> 15</h3>
+                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
                         <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
                         <h3 className="type"><span>Car Type :</span> Sedan</h3>
                         <h4 className="location"><span>Location :</span> Vadodara</h4>
@@ -291,7 +291,7 @@ const Header = () => {
                         <h1 className="name"><span>Model :</span> Honda Amaze</h1>
                         <h3 className="charges"><span>Rent per day :</span> 1500</h3>
                         <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Milega :</span> 15</h3>
+                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
                         <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
                         <h3 className="type"><span>Car Type :</span> Sedan</h3>
                         <h4 className="location"><span>Location :</span> Vadodara</h4>
@@ -303,7 +303,7 @@ const Header = () => {
                         <h1 className="name"><span>Model :</span> Honda Amaze</h1>
                         <h3 className="charges"><span>Rent per day :</span> 1500</h3>
                         <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Milega :</span> 15</h3>
+                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
                         <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
                         <h3 className="type"><span>Car Type :</span> Sedan</h3>
                         <h4 className="location"><span>Location :</span> Vadodara</h4>
@@ -315,7 +315,7 @@ const Header = () => {
                         <h1 className="name"><span>Model :</span> Honda Amaze</h1>
                         <h3 className="charges"><span>Rent per day :</span> 1500</h3>
                         <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Milega :</span> 15</h3>
+                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
                         <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
                         <h3 className="type"><span>Car Type :</span> Sedan</h3>
                         <h4 className="location"><span>Location :</span> Vadodara</h4>
@@ -327,7 +327,7 @@ const Header = () => {
                         <h1 className="name"><span>Model :</span> Honda Amaze</h1>
                         <h3 className="charges"><span>Rent per day :</span> 1500</h3>
                         <h3 className="seats"><span>Seats :</span> 5</h3>
-                        <h3 className="mileage"><span>Milega :</span> 15</h3>
+                        <h3 className="mileage"><span>Mileage :</span> 15</h3>
                         <h3 className="fuel"><span>Fuel Type :</span> Diesel</h3>
                         <h3 className="type"><span>Car Type :</span> Sedan</h3>
                         <h4 className="location"><span>Location :</span> Vadodara</h4>
