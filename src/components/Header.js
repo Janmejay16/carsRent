@@ -213,8 +213,168 @@ const Header = () => {
                 "type": "jeep",
                 "location": "goa",
                 "image": jeep
-            }
-        ])
+            },
+            {
+                "name": "WagonR",
+                "rent": "800",
+                "seats": "5",
+                "mileage": "18",
+                "fuel": "petrol",
+                "type": "compact",
+                "location": "vadodara",
+                "image": wagonr
+        },
+        {
+                "name": "DatsonGo",
+                "rent": "800",
+                "seats": "5",
+                "mileage": "19",
+                "fuel": "perol",
+                "type": "compact",
+                "location": "leh",
+                "image": datson
+        },
+        {
+                "name": "i10Grand",
+                "rent": "1200",
+                "seats": "5",
+                "mileage": "16",
+                "fuel": "petrol",
+                "type": "compact",
+                "location": "ladakh",
+                "image": i10
+        },
+        {
+                "name": "ignis",
+                "rent": "1000",
+                "seats": "5",
+                "mileage": "19",
+                "fuel": "petrol",
+                "type": "compact",
+                "location": "goa",
+                "image": ignis
+        },
+        {
+                "name": "sedan",
+                "rent": "1400",
+                "seats": "5",
+                "mileage": "19",
+                "fuel": "diesel",
+                "type": "sedan",
+                "location": "udaipur",
+                "image": sedan
+        },
+        {
+            "name": "suv",
+            "rent": "2000",
+            "seats": "7",
+            "mileage": "8",
+            "fuel": "diesel",
+            "type": "suv",
+            "location": "ladakh",
+            "image": suv
+        },
+        {
+            "name": "muv",
+            "rent": "2500",
+            "seats": "8",
+            "mileage": "10",
+            "fuel": "diesel",
+            "type": "muv",
+            "location": "leh",
+            "image": muv
+        },
+        {
+            "name": "jeep",
+            "rent": "2000",
+            "seats": "6",
+            "mileage": "12",
+            "fuel": "diesel",
+            "type": "jeep",
+            "location": "goa",
+            "image": jeep
+        },
+        {
+            "name": "WagonR",
+            "rent": "800",
+            "seats": "5",
+            "mileage": "18",
+            "fuel": "petrol",
+            "type": "compact",
+            "location": "vadodara",
+            "image": wagonr
+        },
+        {
+            "name": "DatsonGo",
+            "rent": "800",
+            "seats": "5",
+            "mileage": "19",
+            "fuel": "perol",
+            "type": "compact",
+            "location": "leh",
+            "image": datson
+        },
+        {
+            "name": "i10Grand",
+            "rent": "1200",
+            "seats": "5",
+            "mileage": "16",
+            "fuel": "petrol",
+            "type": "compact",
+            "location": "ladakh",
+            "image": i10
+        },
+        {
+            "name": "ignis",
+            "rent": "1000",
+            "seats": "5",
+            "mileage": "19",
+            "fuel": "petrol",
+            "type": "compact",
+            "location": "goa",
+            "image": ignis
+        },
+        {
+            "name": "sedan",
+            "rent": "1400",
+            "seats": "5",
+            "mileage": "19",
+            "fuel": "diesel",
+            "type": "sedan",
+            "location": "udaipur",
+            "image": sedan
+        },
+        {
+            "name": "suv",
+            "rent": "2000",
+            "seats": "7",
+            "mileage": "8",
+            "fuel": "diesel",
+            "type": "suv",
+            "location": "ladakh",
+            "image": suv
+        },
+        {
+            "name": "muv",
+            "rent": "2500",
+            "seats": "8",
+            "mileage": "10",
+            "fuel": "diesel",
+            "type": "muv",
+            "location": "leh",
+            "image": muv
+        },
+        {
+            "name": "jeep",
+            "rent": "2000",
+            "seats": "6",
+            "mileage": "12",
+            "fuel": "diesel",
+            "type": "jeep",
+            "location": "goa",
+            "image": jeep
+        }
+    ])
     
     const handleCheck = e => {
         setFilters({...filters, [e.target.name]: e.target.checked})
