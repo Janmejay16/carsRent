@@ -28,13 +28,16 @@ const HeadElem = styled.div`
         margin: 0 auto;
         width: 100%;
         height: 100vh;
+        @media only screen and (max-width: 768px) {
+            height: 50vh;
+        } 
 
         .search {
             width: 35%;
             margin: 30vh auto 0 57vw;
             display: flex;
             align-items: center;
-            text-align: center;
+            text-align: left;
             justify-content: center;
             padding: 0 2vw;
             background: rgba(255,255,255,0.6);
@@ -61,16 +64,15 @@ const HeadElem = styled.div`
             }
         }
         .cars {
-            height: 0;
             width: 80%;
             margin: 2vw 0;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-start;
             .item {
-                width: 22%;
-                margin: 1vw auto;
+                width: 20%;
+                margin: 1vw 0 1vw 4%;
                 display: flex;
                 flex-direction: column;
                 padding: 0 0 1vw 0;
@@ -80,7 +82,7 @@ const HeadElem = styled.div`
                     width: 100%;
                     margin-bottom: 1vw;
                     img {
-                        height: 25vh;
+                        height: 11vw;
                         width: 100%;
                         border-top-left-radius: 10px;
                         border-top-right-radius: 10px;
@@ -124,6 +126,8 @@ const HeadElem = styled.div`
 const Header = () => {
     
     const [location, setLocation] = useState("")
+
+
 
     const handleInput = e => {
         setLocation(e.target.value)
@@ -209,8 +213,42 @@ const Header = () => {
                 "type": "jeep",
                 "location": "goa",
                 "image": jeep
-        }
+            }
         ])
+    
+    const handleCheck = e => {
+        setFilters({...filters, [e.target.name]: e.target.checked})
+    }
+
+    const [filters,setFilters] = useState({
+        "twowheeler": false,
+        "fourwheeler": false
+    })
+
+    const [twoWheel, setTwoWheel] = useState({
+        "activa": false,
+        "vespa": false,
+        "fascino": false,
+        "bullet": false
+    })
+
+    const [fourWheel, setFourWheel] = useState({
+        "wagonr": false,
+        "datsongo": false,
+        "i10": false,
+        "ignis": false,
+        "sedan": false,
+        "suv": false,
+        "muv": false,
+        "jeep": false
+    })
+
+    const [seats,setSeats] = useState({
+        "five": false,
+        "six": false,
+        "seven": false,
+        "eight": false
+    })
 
     return(
         <HeadElem>
@@ -233,20 +271,21 @@ const Header = () => {
                     </FormControl>
                 </div>
             </div>
-            <section>            
+            <h1 style={{textAlign: "center", width: "80%", margin: "2vw auto"}}>Cars Available</h1>
+            <section style={{visibility: (location ? "visible" : "hidden")}}>            
                 <div className="filter">
                     <div className="item">
                         <h5>Vehicle Type</h5>
                         <div className="check">
                             <label for="twowheeler">Two Wheeler</label>
-                            <input id="twowheeler" name="twowheeler" type="checkbox"/>
+                            <input onChange={handleCheck} value={filters.twowheeler} id="twowheeler" name="twowheeler" type="checkbox"/>
                         </div>
                         <div className="check">
                             <label for="fourwheeler">Four Wheeler</label>
-                            <input id="fourwheeler" name="fourwheeler" type="checkbox"/>
+                            <input onChange={handleCheck} value={filters.fourwheeler} id="fourwheeler" name="fourwheeler" type="checkbox"/>
                         </div>
                     </div>
-                    <div style={{borderTop: "2px solid black"}} className="item">
+                    <div style={{display: (filters.twowheeler ? "block" : "none"),borderTop: "2px solid black"}} className="item">
                         <h5>2-Wheeler Models</h5>
                         <div className="check">
                             <label for="activa">Activa 5G</label>
@@ -265,7 +304,7 @@ const Header = () => {
                             <input id="bullet" name="bullet" type="checkbox"/>
                         </div>
                     </div>
-                    <div style={{borderTop: "2px solid black"}} className="item">
+                    <div style={{display: (filters.fourwheeler ? "block" : "none"),borderTop: "2px solid black"}} className="item">
                         <h5>4-Wheeler Models</h5>
                         <div className="check">
                             <label for="wagonr">WagonR</label>
@@ -300,7 +339,7 @@ const Header = () => {
                             <input id="jeep" name="jeep" type="checkbox"/>
                         </div>
                     </div>
-                    <div style={{borderTop: "2px solid black"}} className="item">
+                    <div style={{display: (filters.fourwheeler ? "block" : "none"),borderTop: "2px solid black"}} className="item">
                         <h5>Number of Seats</h5>
                         <div className="check">
                             <label for="five">Five</label>
@@ -321,7 +360,9 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="cars">
-                    {cars.map((car,index) => (
+                    {cars.map((car,index) => 
+                        (car.location == location ) ?
+                            (
                             <div className="item">
                                 <div className="image">
                                     <img src={car.image} />
@@ -334,7 +375,7 @@ const Header = () => {
                                 <h3 className="type"><span>Car Type :</span> {car.type}</h3>
                                 <h4 className="location"><span>Location :</span> {car.location}</h4>
                             </div>
-                        )
+                        ) : ""
                     )
                     }          
                 </div>

@@ -12,7 +12,7 @@ const FooterElem = styled.footer`
     background-size: cover;
     background-repeat: no-repeat;
     .top {
-        width: 80%;
+        width: 60%;
         margin: 1vw auto;
         display: flex;
         align-items: top;
@@ -26,6 +26,7 @@ const FooterElem = styled.footer`
                 margin: 1vw 0 2vw 0;
             }
             ul {
+                width: 90%;
                 list-style: none;
                 padding: 0;
                 display: flex;
@@ -33,9 +34,9 @@ const FooterElem = styled.footer`
                 justify-content: left;
                 
                 li {
-                    width: 23%;
+                    width: 25%;
                     margin: 0;
-                    text-align: left;
+                    text-align: center;
                     a {
                         font-size: 1.2vw;
                         color: white;
@@ -50,15 +51,16 @@ const FooterElem = styled.footer`
         }
         #social {
             margin-left: 10%;
-            text-align: left;
+            text-align: right;
             ul {
+                width: 70%;
                 display: flex;
                 align-items: center;
-                justify-content: center;
+                margin-left: 30%;
                 li {
-                    text-align: left;
+                    text-align: right;
                     width: 25%;
-                    margin: 0 auto;
+                    margin: 0;
                     a {
                         font-size: 2vw;
                     }
