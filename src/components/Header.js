@@ -1,11 +1,16 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import {useState, useEffect} from 'react'
 import header from '../images/header.png'
 import Navbar from './Navbar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearchLocation } from '@fortawesome/free-solid-svg-icons'
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import amaze from '../images/amaze.jpg'
 import Footer from './Footer'
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
 
 const HeadElem = styled.div`
@@ -18,25 +23,15 @@ const HeadElem = styled.div`
         height: 100vh;
 
         .search {
-            width: 40%;
-            margin: 30vh auto 0 55vw;
+            width: 35%;
+            margin: 30vh auto 0 57vw;
             display: flex;
             align-items: center;
             text-align: center;
             justify-content: center;
-            background: rgba(0,0,0,0.4);
-            padding: 0;
-            .icon {
-                width: 10%;
-                color: white;
-            }
-            select {
-                border: none;
-                background: rgba(255,255,255,0.7);
-                width: 90%;
-                padding: 1vw;
-                margin: 0;
-            }
+            padding: 0 2vw;
+            background: rgba(255,255,255,0.6);
+            font-size: 1.6vw;
         }
     }
     section {
@@ -119,21 +114,31 @@ const HeadElem = styled.div`
 `
 
 const Header = () => {
+    
+    const [location, setLocation] = useState("")
+
+    const handleInput = e => {
+        setLocation(e.target.value)
+    }
+
     return(
         <HeadElem>
             <div className="header">
                 <Navbar />
                 <div className="search">
-                    <div class="icon">
-                        <FontAwesomeIcon icon={faSearchLocation} />
-                    </div>
-                    <select name="location" id="location">
-                        <option value="" disabled>Location</option>
-                        <option value="ahmedabad">Ahmedabad</option>
-                        <option value="goa">Goa</option>
-                        <option value="mumbai">Mumbai</option>
-                        <option value="vadodara">Vadodara</option>
-                    </select>
+                    <FontAwesomeIcon icon={faMapMarkerAlt} />
+                    <FormControl style={{width: "90%",margin: "0 auto 1vw 5%", padding: "0 1vw"}}>
+                    <InputLabel id="demo-simple-select-label">Location</InputLabel>
+                        <Select
+                            name="location"
+                            onChange={handleInput}
+                        >
+                            <MenuItem value={"ahmedabad"}>Ahmedabad</MenuItem>
+                            <MenuItem value={"goa"}>Goa</MenuItem>
+                            <MenuItem value={"mumbai"}>Mumbai</MenuItem>
+                            <MenuItem value={"vadodara"}>Vadodara</MenuItem>
+                        </Select>
+                    </FormControl>
                 </div>
             </div>
             <section>            
