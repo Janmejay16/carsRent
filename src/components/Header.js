@@ -18,6 +18,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import ProfilePage from './ProfilePage'
 
 
 const HeadElem = styled.div`
@@ -126,8 +127,6 @@ const HeadElem = styled.div`
 const Header = () => {
     
     const [location, setLocation] = useState("")
-
-
 
     const handleInput = e => {
         setLocation(e.target.value)

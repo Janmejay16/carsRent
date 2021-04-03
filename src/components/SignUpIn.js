@@ -9,6 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Input from '@material-ui/core/Input';
 import Select from '@material-ui/core/Select';
 import {useState, useEffect} from 'react'
+import axios from 'axios'
 
 const Button = styled.button`
     display: block;
@@ -105,7 +106,9 @@ const Choice = styled.div`
     }
 `
 
-const SignUpIn = () => {
+const SignUpIn = (props) => {
+
+    const {isLoggedIn, setLoggedIn, currentUser, setCurrentUser} = props
 
     const [vehicleOwner,setVehicleOwner] = useState(false)
 
@@ -124,7 +127,49 @@ const SignUpIn = () => {
     }
 
     const handleSubmit = e => {
-        console.log(details)
+        // console.log(details)
+        if(signIn) {
+            axios.post("http://localhost:9000/login", {
+                "email": details["email"],
+                "password" :details["password"],
+                "user": (vehicleOwner ? "vehicleowner" : "user")
+            })
+            .then(res => {
+                console.log(res)
+                if(res.data.success == true) {
+                    setLoggedIn(true)
+                }
+            })
+        }
+        else {
+            if(vehicleOwner) {
+                const formData = new FormData()
+                // for ( var key in details ) {
+                //     formData.append(key, details[key]);
+                // }
+                Object.keys(details).forEach(key => {
+                    formData.append(key,details[key])
+                })
+                // formData.append("file",details.license)
+                // formData.append("file",details.vehicleImage)
+                // formData.append("file",details.rc)
+                // formData.append("file",details.insurance)
+                axios.post("http://localhost:9000/register", formData)
+                .then(res => {
+                    console.log(res)
+                })
+            }
+            // axios.post("http://localhost:9000/register", {
+            //     "details": details,
+            //     "user": (vehicleOwner ? "vehicleowner" : "user")
+            // })
+            // .then(res => {
+            //     console.log(res)
+            //     // if(res.data.success == true) {
+            //     //     setLoggedIn(true)
+            //     // }
+            // })
+        }
     }
 
     const [signIn,setSignIn] = useState(false)
@@ -226,7 +271,7 @@ const SignUpIn = () => {
                 <div id="vehicleowner" style={{display: (vehicleOwner ? "block" : "none")}}>
                     {/* Model Name */}
                     <TextField
-                        name="model"
+                        name="modelName"
                         onChange={handleInput}
                         style={{width: "40%",margin: "1vw 5%"}}
                         variant="outlined"
@@ -238,7 +283,7 @@ const SignUpIn = () => {
                     />
                     {/* Rent Per Day */}
                     <TextField
-                        name="rent"
+                        name="rentPerDay"
                         onChange={handleInput}
                         style={{width: "40%",margin: "1vw 5%"}}
                         variant="outlined"
@@ -279,7 +324,7 @@ const SignUpIn = () => {
                     <FormControl style={{width: "40%",margin: "1vw 5%"}}>
                     <InputLabel id="demo-simple-select-label">Fuel Type</InputLabel>
                         <Select
-                            name="fuel"
+                            name="fuelType"
                             onChange={handleInput}
                         >
                             <MenuItem value={"petrol"}>Petrol</MenuItem>
