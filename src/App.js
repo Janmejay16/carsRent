@@ -68,32 +68,32 @@ const App = () => {
         />} 
       />
       
-      {/* <Route exact path="/contact" component={
+      <Route exact path="/contact" component={
         () => <Contact
           isLoggedIn={isLoggedIn}
           currentUser={currentUser}
           setLoggedIn={setLoggedIn}
           setCurrentUser={setCurrentUser}
         />} 
-      /> */}
+      />
       
-      {/* <Route exact path="/about" component={
+      <Route exact path="/about" component={
         () => <About
           isLoggedIn={isLoggedIn}
           currentUser={currentUser}
           setLoggedIn={setLoggedIn}
           setCurrentUser={setCurrentUser}
         />} 
-      /> */}
+      />
 
-      {/* <Route exact path="/services" component={
+      <Route exact path="/services" component={
         () => <Services
           isLoggedIn={isLoggedIn}
           currentUser={currentUser}
           setLoggedIn={setLoggedIn}
           setCurrentUser={setCurrentUser}
         />} 
-      /> */}
+      />
     </Router>
   )
 }

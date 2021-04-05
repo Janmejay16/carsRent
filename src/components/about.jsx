@@ -1,14 +1,13 @@
 
 import React from "react";
 import image from "../styles/AboutUs.png";
+import Navbar from './Navbar'
+import Footer from './Footer'
 
-function About(){
-    const mystyle={
-       width: "800px",
-       height: "100%"
-    };
+function About() {
     return (
         <div>
+          <Navbar />
   <div className="About col-lg-6 col-md-12 col-sm-12">
 
   <h1 className="moon">About Us</h1>
@@ -21,9 +20,10 @@ The company is based in Vadodara and has started to provide its services in famo
 </div>
 <div className="col-lg-6 col-md-12 col-sm-12">
 <div>
-<img className="images" src={image} alt="Image" style={mystyle}/>
+<img className="images" src={image} alt="Image"/>
 </div>
 </div>
+<Footer />
 </div>
 );
 }

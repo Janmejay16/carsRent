@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
-import header from '../images/header.png'
+import header from '../images/logo2.jpeg'
 
 const Nav = styled.div`
     display: flex;
