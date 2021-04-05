@@ -27,7 +27,13 @@ const sequelize =new Sequelize( "postgres://axamejuwvwitvy:a2b2e29ccccac5f437560
       protocol: "postgres",
       port: 5432,
       host: "ec2-52-1-115-6.compute-1.amazonaws.com:5432",
-      logging: true //false
+      logging: true, //false
+      dialectOptions: {
+          ssl: {
+            require: true,
+            rejectUnauthorized: false // <<<<<<< YOU NEED THIS
+            }
+        }   
    });
 
 sequelize
