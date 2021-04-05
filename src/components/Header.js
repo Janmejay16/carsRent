@@ -350,7 +350,7 @@ const Header = (props) => {
                 <div className="popup" style={{display: popup ? "flex" : "none"}}>
                     <div className="icon" onClick={() => setPopup(false)}>X</div>
                     <div className="image">
-                        <img src={`http://localhost:9000/uploads/${currentCar.vehicleImage}.png`} />
+                        <img src={`http://localhost:5000/uploads/${currentCar.vehicleImage}.png`} />
                     </div>
                     <div className="text">
                         <h1 className="name"><span>Model :</span>{currentCar.modelName}</h1>
@@ -485,7 +485,7 @@ const Header = (props) => {
                             (
                             <div className="item" onClick={() => seeDetails(car.fk_ownerid)}>
                                 <div className="image">
-                                    <img src={`http://localhost:9000/uploads/${car.vehicleImage}.png`} />
+                                    <img src={`http://localhost:5000/uploads/${car.vehicleImage}.png`} />
                                 </div>
                                 <h1 className="name"><span>Model :</span>{car.modelName}</h1>
                                 <h3 className="charges"><span>Rent per day :</span> {car.rentPerDay}</h3>

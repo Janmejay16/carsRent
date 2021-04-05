@@ -22,7 +22,7 @@ const secretOrKey = "youcannevereverguessthisstringifursmarthahalol"
 users.use(cors())
 
 var app = express();
-var port = process.env.PORT || 9000
+var port = process.env.PORT || 5000
 
 app.use(bodyParser.json())
 app.use(cors())

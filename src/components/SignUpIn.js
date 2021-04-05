@@ -133,7 +133,7 @@ const SignUpIn = (props) => {
         if(signIn) {
             details["user"] = (signInVehicle ? "vehicleowner" : "user")
             // console.log(details)
-            axios.post("http://localhost:9000/login", details)
+            axios.post("/login", details)
             .then(res => {
                 console.log(res)
                 if(res.data.success == true) {
@@ -153,7 +153,7 @@ const SignUpIn = (props) => {
                 Object.keys(details).forEach(key => {
                     formData.append(key,details[key])
                 })
-                axios.post("http://localhost:9000/register/owner", formData)
+                axios.post("/register/owner", formData)
                 .then(res => {
                     console.log(res)
                     if(res.data.success==true) {
@@ -164,7 +164,7 @@ const SignUpIn = (props) => {
                 })
             }
             else {
-                axios.post("http://localhost:9000/register/user", details)
+                axios.post("/register/user", details)
                 .then(res => {
                     console.log(res)
                     if(res.data.success==true) {

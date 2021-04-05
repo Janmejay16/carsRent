@@ -50,7 +50,7 @@ const Enquire = (props) => {
 
     const submit = () => {
         (isLoggedIn) ? (
-            axios.post('http://localhost:9000/enquiries',details)
+            axios.post('/enquiries',details)
             .then(res => {
                 if(res.data.success == true) {
                     console.log(res.data)

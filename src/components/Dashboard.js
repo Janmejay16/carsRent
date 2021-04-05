@@ -88,14 +88,14 @@ const Dashboard = (props) => {
 
     const fetchNotifications = () => {
         role=="user" ? 
-        (axios.get('http://localhost:9000/notifications/'+currentUser.id)
+        (axios.get('/notifications/'+currentUser.id)
         .then(res => {
             console.log(res.data)
             setNotifications(res.data)
             setNotify(true)
         }))
         :
-        (axios.get('http://localhost:9000/enquiries/'+currentUser.id)
+        (axios.get('/enquiries/'+currentUser.id)
         .then(res => {
             console.log(res.data)
             setNotifications(res.data)
@@ -114,7 +114,7 @@ const Dashboard = (props) => {
             "status": "approved",
             "enquiry_id": notifications.enquiry_id
         }
-        axios.post('http://localhost:9000/notifications/', notification)
+        axios.post('/notifications/', notification)
         .then(res => {
             if(res.data.success == true) {
                 alert('Request Approved')
@@ -130,7 +130,7 @@ const Dashboard = (props) => {
             "status": "declined",
             "enquiry_id": notifications.enquiry_id
         }
-        axios.post('http://localhost:9000/notifications/', notification)
+        axios.post('/notifications/', notification)
         .then(res => {
             if(res.data.success == true) {
                 alert('Request Declined')
@@ -159,7 +159,7 @@ const Dashboard = (props) => {
 
                             return <div className="image">
                                 <h4>{key}</h4>
-                                <img src={`http://localhost:9000/uploads/${value}.png`} alt={key} />
+                                <img src={`/uploads/${value}.png`} alt={key} />
                                 </div>
                         }
 
