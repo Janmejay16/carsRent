@@ -42,7 +42,8 @@ const Nav = styled.div`
     }
 `
 
-const Navbar = () => {
+const Navbar = (props) => {
+    const {isLoggedIn, setLoggedIn, currentUser, setCurrentUser} = props
     return(
         <Nav>
             <div className="logo">
@@ -50,11 +51,11 @@ const Navbar = () => {
             </div>
             <ul>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/">About Us</Link></li>
-                <li><Link to="/">Services</Link></li>
+                <li><Link to="/about">About Us</Link></li>
+                <li><Link to="/services">Services</Link></li>
                 <li><Link to="/faq">FAQs</Link></li>
-                <li><Link to="/">Contact</Link></li>
-                <li><Link to="/account">Login</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
+                <li><Link to="/account">{(isLoggedIn ? "Hi, "+currentUser.name : "Login")}</Link></li>
             </ul>
         </Nav>
     )

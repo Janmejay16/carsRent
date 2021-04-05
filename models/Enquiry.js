@@ -3,36 +3,37 @@ const db = require("../database/db");
 
 // Define Database Model
 module.exports = db.sequelize.define (
-    'vehicleowners',
+    'enquiry',
     {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        name: {
+        user_id: {
+            type: Sequelize.INTEGER
+        },
+        owner_id: {
+            type: Sequelize.INTEGER
+        },
+        vehicle_id: {
+            type: Sequelize.INTEGER
+        },
+        requiredDate: {
             type: Sequelize.STRING
         },
-        email: {
+        returnDate: {
             type: Sequelize.STRING
         },
-        password: {
+        pickupLocation: {
             type: Sequelize.STRING
         },
-        mobile: {
+        message: {
             type: Sequelize.STRING
         },
-        address: {
-            type: Sequelize.STRING
-        },
-        license: {
-            type: Sequelize.STRING
-        },
-        rc: {
-            type: Sequelize.STRING
-        },
-        insurance: {
-            type: Sequelize.STRING
+        approval: {
+            type: Sequelize.STRING,
+            default: "pending"
         }
     },
     {

@@ -5,22 +5,17 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('./models/User');
 const VehicleOwner = require('./models/VehicleOwner');
+const Vehicles = require('./models/Vehicles');
+const Enquiry = require('./models/Enquiry');
+const Notification = require('./models/Notification');
 var bodyParser = require('body-parser');
 const Sequelize = require('sequelize');
 const multer = require('multer')
-var multiparty = require('multiparty');
-const fs = require('fs');
+const path = require('path');
+const addData = require('./database/addData')
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + '-' +file.originalname)
-    }
-})
-
-const upload = multer({ storage: storage })
+Vehicles.belongsTo(VehicleOwner, {foreignKey: 'fk_ownerid', targetkey: 'id'})
+VehicleOwner.hasOne(Vehicles, {foreignKey: 'fk_ownerid', targetkey: 'id'})
 
 const secretOrKey = "youcannevereverguessthisstringifursmarthahalol"
 
@@ -35,135 +30,251 @@ app.use(
     bodyParser.urlencoded({extended: false})
 )
 
+app.use(express.static(path.join(__dirname,'build')));
+app.use('/uploads', express.static('uploads'))
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, '/uploads/'));
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + req.body.email.split('.').join("") + path.extname(file.originalname))
+    }
+});
+const upload = multer({ storage: storage })
+
+// ----------------------------------------------------------------------------
+// Add Data
+// ----------------------------------------------------------------------------
+// addData()
+
 app.get('/', (req,res) => {
-    res.json({"Message": "Hey"})
+    res.sendFile(path.join(__dirname+'/build/index.html'));
 })
 
-app.get('/user', (req,res) => {
+app.get('/users', (req,res) => {
     User.findAll({})
     .then(users => {
         res.json(users)
     })
 })
 
-app.get('/vehicleowner', (req,res) => {
+app.get('/vehicleowners', (req,res) => {
     VehicleOwner.findAll({})
-    .then(users => {
-        res.json(users)
+    .then(owners => {
+        res.json(owners)
     })
 })
 
-// Register User
-app.post('/register', (req,res) => {
-    var name;
-    var mobile;
-    var email;
-    var address;
-    var password;
-    var modelName;
-    var rentPerDay;
-    var seats;
-    var mileage;
-    var fuelType;
-    var type;
-    if(req.body.user == "user") {
-        User.findOne({
-            where: Sequelize.or(
-                {email: req.body.details.email},
-                {mobile: req.body.details.mobile}
-            )
+app.get('/vehicles', (req,res) => {
+    Vehicles.findAll({})
+    .then(vehicles => {
+        res.json(vehicles)
+    })
+})
+
+app.get('/vehicle/:id', (req,res) => {
+    id = req.params.id
+    Vehicles.findOne({ where: {fk_ownerid: id} })
+    .then(vehicle => {
+        res.json(vehicle)
+    })
+})
+
+app.get('/uploads/:filename', (req,res) => {
+    res.send(filename)
+})
+
+app.get('/enquiries', (req,res) => {
+    Enquiry.findAll({})
+    .then(enquiries => {
+        res.json(enquiries)
+    })
+})
+
+app.get('/enquiries/:id', (req,res) => {
+    id = req.params.id
+    Enquiry.findOne({ where: {owner_id: id}})
+    .then(enquiry => {
+        Vehicles.findOne({ where: {vehicleId: enquiry.vehicle_id}})
+        .then(vehicle => {
+            res.json({
+                modelName: vehicle.modelName,
+                requiredDate: enquiry.requiredDate,
+                returnDate: enquiry.returnDate,
+                pickupLocation: enquiry.pickupLocation,
+                user_id: enquiry.user_id,
+                enquiry_id: enquiry.id
+            })
         })
+    })
+})
+
+app.post('/enquiries', (req,res) => {
+    Enquiry.create({
+        user_id: req.body.user_id,
+        owner_id: req.body.owner_id,
+        vehicle_id: req.body.vehicle_id,
+        requiredDate: req.body.requiredDate,
+        returnDate: req.body.returnDate,
+        pickupLocation: req.body.pickupLocation,
+        message: req.body.message,
+        approval: "pending"
+    })
+    .then(enquiry => {
+        res.status(200).json({
+            success: true,
+            enquiry: enquiry
+        })
+    })
+})
+
+
+app.get('/notifications', (req,res) => {
+    Notification.findAll({})
+    .then(notifications => {
+        res.json(notifications)
+    })
+})
+
+app.get('/notifications/:id', (req,res) => {
+    id = req.params.id
+    Notification.findOne({ where: {user_id: id}})
+    .then(notification => {
+        User.findOne({ where: {id: id}})
         .then(user => {
-            if(user) {
-                return res.status(400).json({ email: "Email already exists"})
-            }
-            else {
-                newUser = new User({
-                    name: req.body.details.name,
-                    email: req.body.details.email,
-                    mobile: req.body.details.mobile,
-                    address: req.body.details.address,
-                    password: req.body.details.password
-                })
-                
-                bcrypt.genSalt(10, (err, salt) => {
-                    bcrypt.hash(newUser.password, salt, (err, hash) => {
-                        if (err) throw err;
-                        newUser.password = hash;
-                        newUser.save()
-                        .then(user => res.json(user))
-                        .catch(err => console.log(err));
-                    });
-                  });
-            }
-        })
-    }
-    else {
-        var form = new multiparty.Form();
-        form.parse(req, function(err, fields, files) {
-            // fields fields fields
-            name = fields.name[0]
-            mobile = fields.mobile[0]
-            email = fields.email[0]
-            address = fields.address[0]
-            password = fields.password[0]
-            modelName = fields.modelName[0]
-            rentPerDay = fields.rentPerDay[0]
-            seats = fields.seats[0]
-            mileage = fields.mileage[0]
-            fuelType = fields.fuelType[0]
-            type = fields.type[0]
-            location = fields.location[0]
-
-            var fullName = name.split(" ").join("")
-            for (file in files) {
-                fs.writeFile("./uploads/"+file+"-"+email+"-"+fullName+'-'+files[file][0].originalFilename, files[file], function(err) {
-                    if(err) {
-                        return console.log(err);
-                    }
-                    console.log("The file was saved!");
-                });
-            }
-
-            VehicleOwner.findOne({
-                where: Sequelize.or(
-                    {email: email},
-                    {mobile: mobile}
-                )
-            })
-            .then(user => {
-                if(user) {
-                    return res.status(400).json({ email: "Email already exists"})
-                }
-                else {
-                    newUser = new VehicleOwner({
-                        name: name,
-                        email: email,
-                        mobile: mobile,
-                        address: address,
-                        password: password,
-                        modelName: modelName,
-                        rentPerDay: rentPerDay,
-                        seats: seats,
-                        mileage: mileage,
-                        fuelType: fuelType,
-                        type: type,
-                        location: location
+            Enquiry.findOne({ where: {id: notification.enquiry_id}})
+            .then(enquiry => {
+                Vehicles.findOne({ where: {vehicleId: enquiry.vehicle_id}})
+                .then(vehicle => {
+                    res.json({
+                        message: notification.status,
+                        modelName: vehicle.modelName,
+                        requiredDate: enquiry.requiredDate,
+                        returnDate: enquiry.returnDate,
+                        pickupLocation: enquiry.pickupLocation
                     })
-                    bcrypt.genSalt(10, (err, salt) => {
-                        bcrypt.hash(newUser.password, salt, (err, hash) => {
-                            if (err) throw err;
-                            newUser.password = hash;
-                            newUser.save()
-                            .then(user => res.json(user))
-                            .catch(err => console.log(err));
-                        });
-                      }
-                    );
-                }
+                })
             })
-        });   
-    }
+        })
+    })
+})
+
+app.post('/notifications', (req,res) => {
+    Notification.create({
+        user_id: req.body.user_id,
+        enquiry_id: req.body.enquiry_id,
+        status: req.body.status
+    })
+    .then(notification => {
+        res.status(200).json({
+            success: true,
+            notification: notification
+        })
+    })
+})
+
+
+app.post('/register/user', (req,res) => {
+    User.findOne({
+        where: Sequelize.or(
+            {email: req.body.email},
+            {mobile: req.body.mobile}
+        )
+    })
+    .then(user => {
+        if(user) {
+            return res.status(400).json({ email: "Email already exists"})
+        }
+        else {
+            var password = req.body.password;
+            // bcrypt.genSalt(10, (err, salt) => {
+            //     if(!err) {
+            //         bcrypt.hash(password, salt, (err, hash) => {
+            //             if (err) throw err;
+            //             password = hash;
+            //         });
+            //     }
+            // });
+            User.create({
+                name: req.body.name,
+                mobile: req.body.mobile,
+                email: req.body.email,
+                address: req.body.address,
+                password: password
+            }).then(user=> {
+                res.status(200).json({
+                    success: true,
+                    user: user
+                })
+            })
+        }
+    })
+})
+// Register User
+app.post('/register/owner', upload.fields([{
+    name: 'license', maxCount: 1
+  }, {
+    name: 'rc', maxCount: 1
+  }, {
+    name: 'insurance', maxCount: 1
+  }, {
+    name: 'vehicleImage', maxCount: 1
+  }]) ,(req,res) => {
+    VehicleOwner.findOne({
+        where: Sequelize.or(
+            {email: req.body.email},
+            {mobile: req.body.mobile}
+        )
+    })
+    .then(user => {
+        if(user) {
+            return res.status(400).json({ email: "Email already exists"})
+        }
+        else {        
+            var owner;
+            var password = req.body.password;
+            var email = req.body.email
+            // bcrypt.genSalt(10, (err, salt) => {
+            //     if(!err){
+            //         bcrypt.hash(req.body.password, salt, (err, hash) => {
+            //             if (err) throw err;
+            //             password = hash
+            //         });
+            //     }
+            // });
+            VehicleOwner.create({
+                name: req.body.name,
+                mobile: req.body.mobile,
+                email: req.body.email,
+                address: req.body.address,
+                password: password,
+                rc: "rc-"+email.split('.').join(""),
+                license: "license-"+email.split('.').join(""),
+                insurance: "insurance-"+email.split('.').join("")
+            })
+            .then(createdOwner => {
+                owner = createdOwner
+                return Vehicles.create({
+                    modelName: req.body.modelName,
+                    rentPerDay: req.body.rentPerDay,
+                    seats: req.body.seats,
+                    mileage: req.body.mileage,
+                    fuelType: req.body.fuelType,
+                    type: req.body.type,
+                    location: req.body.location,
+                    fk_ownerid: owner.id,
+                    vehicleImage: "vehicleImage-"+email.split('.').join(""),
+                })
+                .then(vehicle => {
+                    res.status(200).json({
+                        success: true,
+                        owner: owner
+                    })
+                })
+            })
+        }
+    })
 })
 
 // User Login
@@ -173,7 +284,9 @@ app.post('/login', (req,res) => {
         const password = req.body.password;
         
         // Find user by email
-        User.findOne({ email }).then(user => {
+        User.findOne({
+            where: {email: email}
+        }).then(user => {
         
             // Check if user exists
             if (!user) {
@@ -181,37 +294,83 @@ app.post('/login', (req,res) => {
             }
             
             // Check password
-            bcrypt.compare(password, user.password).then(isMatch => {
-                if (isMatch) {
+            // bcrypt.compare(password, user.password).then(isMatch => {
+            if(user.password == req.body.password) {
+                // User matched
+                // Create JWT Payload
+                const payload = {
+                id: user.id,
+                name: user.name
+                };
+
+                // Sign token
+                jwt.sign(
+                payload,
+                secretOrKey,
+                {
+                    expiresIn: 31556926 // 1 year in seconds
+                },
+                (err, token) => {
+                    res.json({
+                    success: true,
+                    token: "Bearer " + token,
+                    user: user
+                    });
+                });
+            }
+            else {
+                return res
+                .status(400)
+                .json({ passwordincorrect: "Password incorrect" });
+            }
+        });
+    }
+    else {
+        const email = req.body.email;
+        const password = req.body.password;
+        
+        // Find user by email
+        VehicleOwner.findOne({
+            where: {email: email}
+        }).then(user => {
+        
+            // Check if user exists
+            if (!user) {
+            return res.status(404).json({ emailnotfound: "Email not found" });
+            }
+            
+            // Check password
+            if(user.password == req.body.password) {
+            // bcrypt.compare(password, user.password).then(isMatch => {
+            //     if (isMatch) {
                     // User matched
                     // Create JWT Payload
-                    const payload = {
-                    id: user.id,
-                    name: user.name
-                    };
+                const payload = {
+                id: user.id,
+                name: user.name
+                };
 
-                    // Sign token
-                    jwt.sign(
-                    payload,
-                    secretOrKey,
-                    {
-                        expiresIn: 31556926 // 1 year in seconds
-                    },
-                    (err, token) => {
-                        res.json({
-                        success: true,
-                        token: "Bearer " + token,
-                        user: user
-                        });
-                    }
-                    );
+                // Sign token
+                jwt.sign(
+                payload,
+                secretOrKey,
+                {
+                    expiresIn: 31556926 // 1 year in seconds
+                },
+                (err, token) => {
+                    res.json({
+                    success: true,
+                    token: "Bearer " + token,
+                    user: user
+                    });
                 }
-                else {
-                    return res
-                    .status(400)
-                    .json({ passwordincorrect: "Password incorrect" });
-                }
-            });
+                );
+            }
+            else {
+                return res
+                .status(400)
+                .json({ passwordincorrect: "Password incorrect" });
+            }
         });
     }
 });

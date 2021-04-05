@@ -108,9 +108,11 @@ const Choice = styled.div`
 
 const SignUpIn = (props) => {
 
-    const {isLoggedIn, setLoggedIn, currentUser, setCurrentUser} = props
+    const {isLoggedIn, setLoggedIn, currentUser, setCurrentUser, role, setRole} = props
 
     const [vehicleOwner,setVehicleOwner] = useState(false)
+
+    const [signInVehicle,setSignInVehicle] = useState(false)
 
     const [details, setDetails] = useState({})
 
@@ -129,46 +131,49 @@ const SignUpIn = (props) => {
     const handleSubmit = e => {
         // console.log(details)
         if(signIn) {
-            axios.post("http://localhost:9000/login", {
-                "email": details["email"],
-                "password" :details["password"],
-                "user": (vehicleOwner ? "vehicleowner" : "user")
-            })
+            details["user"] = (signInVehicle ? "vehicleowner" : "user")
+            // console.log(details)
+            axios.post("http://localhost:9000/login", details)
             .then(res => {
                 console.log(res)
                 if(res.data.success == true) {
                     setLoggedIn(true)
+                    setCurrentUser(res.data.user)
+                    console.log(res.data.user)
+                    if(signInVehicle) {
+                        setRole("owner")
+                    }
                 }
             })
         }
+
         else {
             if(vehicleOwner) {
                 const formData = new FormData()
-                // for ( var key in details ) {
-                //     formData.append(key, details[key]);
-                // }
                 Object.keys(details).forEach(key => {
                     formData.append(key,details[key])
                 })
-                // formData.append("file",details.license)
-                // formData.append("file",details.vehicleImage)
-                // formData.append("file",details.rc)
-                // formData.append("file",details.insurance)
-                axios.post("http://localhost:9000/register", formData)
+                axios.post("http://localhost:9000/register/owner", formData)
                 .then(res => {
                     console.log(res)
+                    if(res.data.success==true) {
+                        setLoggedIn(true)
+                        setCurrentUser(res.data.user)
+                        console.log(res.data.user)
+                    }
                 })
             }
-            // axios.post("http://localhost:9000/register", {
-            //     "details": details,
-            //     "user": (vehicleOwner ? "vehicleowner" : "user")
-            // })
-            // .then(res => {
-            //     console.log(res)
-            //     // if(res.data.success == true) {
-            //     //     setLoggedIn(true)
-            //     // }
-            // })
+            else {
+                axios.post("http://localhost:9000/register/user", details)
+                .then(res => {
+                    console.log(res)
+                    if(res.data.success==true) {
+                        setLoggedIn(true)
+                        setCurrentUser(res.data.user)
+                        console.log(res.data.user)
+                    }
+                })
+            }
         }
     }
 
@@ -176,7 +181,12 @@ const SignUpIn = (props) => {
 
     return (
         <div>
-            <Navbar />
+            <Navbar
+                isLoggedIn={isLoggedIn}
+                currentUser={currentUser}
+                setLoggedIn={setLoggedIn}
+                setCurrentUser={setCurrentUser}
+            />
             <Choice className="forms">
                 <button id="left" style={{background: (signIn ? "rgba(150,150,150,0.1" : "#ffa900"), color: (signIn ? "black" : "white")}} onClick={() => setSignIn(false)}>Sign Up</button>
                 <button id="right" style={{background: (signIn ? "#ffa900" : "rgba(150,150,150,0.1"), color: (signIn ? "white" : "black")}} onClick={() => setSignIn(true)}>Sign In</button>
@@ -355,19 +365,20 @@ const SignUpIn = (props) => {
                             name="location"
                             onChange={handleInput}
                         >
-                            <MenuItem value={"vadodara"}>Vadodara</MenuItem>
                             <MenuItem value={"goa"}>Goa</MenuItem>
                             <MenuItem value={"udaipur"}>Udaipur</MenuItem>
+                            <MenuItem value={"kolkata"}>Kolkata</MenuItem>
                             <MenuItem value={"leh"}>Leh</MenuItem>
                             <MenuItem value={"ladakh"}>Ladakh</MenuItem>
+                            <MenuItem value={"mumbai"}>Mumbai</MenuItem>
                         </Select>
                     </FormControl>
 
                     <div className="upload">
                         <h2>Upload Files</h2>
                         <div className="items">
-                            <input name="vehicleimage" onChange={handleFile} style={{visibility: "hidden", position: "absolute", zIndex: "-1"}} type="file" id="vehicleimage"/>
-                            <label className="files" for="vehicleimage">Vehicle Image</label>
+                            <input name="vehicleImage" onChange={handleFile} style={{visibility: "hidden", position: "absolute", zIndex: "-1"}} type="file" id="vehicleImage"/>
+                            <label className="files" for="vehicleImage">Vehicle Image</label>
 
                             <input name="license" onChange={handleFile} style={{visibility: "hidden", position: "absolute", zIndex: "-1"}} type="file" id="license"/>
                             <label className="files" for="license">Upload License</label>
@@ -379,8 +390,8 @@ const SignUpIn = (props) => {
                             <label className="files" for="insurance">Upload Insurance</label>
                             <div className="filesuploaded">
                                 {
-                                    details.vehicleimage ?
-                                    (<div><p className="heading">Vehicle Image :&nbsp; </p><p className="name"> {details.vehicleimage.name}</p></div>) : (<div></div>)
+                                    details.vehicleImage ?
+                                    (<div><p className="heading">Vehicle Image :&nbsp; </p><p className="name"> {details.vehicleImage.name}</p></div>) : (<div></div>)
                                 }
                                 {
                                     details.license ?
@@ -425,6 +436,18 @@ const SignUpIn = (props) => {
                     defaultValue=""
                     size="small"
                     placeholder="Enter Your Password"
+                />
+                <FormControlLabel
+                    style={{width: "70%",margin: "1vw 0 1vw 5%"}}
+                    control={
+                        <Checkbox
+                            checked={signInVehicle}
+                            onChange={(e) => setSignInVehicle(e.target.checked)}
+                            name="signInVehicle"
+                            color="primary"
+                        />
+                    }
+                    label="Sign In as Vehicle Owner"
                 />
             </Form>
             <Button onClick={handleSubmit}>Submit</Button>

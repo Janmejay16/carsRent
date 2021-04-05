@@ -3,35 +3,38 @@ const db = require("../database/db");
 
 // Define Database Model
 module.exports = db.sequelize.define (
-    'vehicleowners',
+    'vehicles',
     {
-        id: {
+        vehicleId: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        name: {
+        location: {
             type: Sequelize.STRING
         },
-        email: {
+        modelName: {
             type: Sequelize.STRING
         },
-        password: {
+        rentPerDay: {
+            type: Sequelize.INTEGER
+        },
+        seats: {
+            type: Sequelize.INTEGER
+        },
+        mileage: {
+            type: Sequelize.INTEGER
+        },
+        fuelType: {
             type: Sequelize.STRING
         },
-        mobile: {
+        vehicleType: {
             type: Sequelize.STRING
         },
-        address: {
+        type: {
             type: Sequelize.STRING
         },
-        license: {
-            type: Sequelize.STRING
-        },
-        rc: {
-            type: Sequelize.STRING
-        },
-        insurance: {
+        vehicleImage: {
             type: Sequelize.STRING
         }
     },

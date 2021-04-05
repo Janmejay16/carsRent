@@ -10,13 +10,14 @@ const Profile = styled.div`
 `
 
 const ProfilePage = (props) => {
-    const {user} = props
+    const {currentUser} = props
     return (
         <Profile>
-            <h1> {user.name} </h1>
-            <h2> {user.email} </h2>
-            <h3> {user.mobile} </h3>
-            <h3> {user.address} </h3>
+            {
+                Object.keys(currentUser).forEach(key => {
+                    return (<h2>{key} : {currentUser[key]}</h2>)
+                })
+            }
         </Profile>
     )
 }

@@ -1,0 +1,255 @@
+/* HEADERRR */
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  li {
+    float: right;
+  }
+  
+  li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    margin-top: 10px;
+    text-decoration: none !important;
+  }
+  li a:hover {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid #111;
+  
+  }
+  
+  /*FOOTER*/
+  p{
+    text-align: center;
+    padding-top: 40px;
+  }
+  .footer-padding {
+      padding-bottom: 60px;
+  }
+  .footer{
+    /* position: absolute; */
+    padding-top: 50px;
+    text-align: center;
+    color: white;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+   background-color:  #ffa900;
+    /*  #ffa900; */
+      /* #f0a500; */
+    /* #89c9b8;  */
+     /* #a3d2ca; */
+    /* #aa530e; */
+    /* #f7931e; */
+    /* #ffa900; */
+    /* #f0a500;  */
+    /* #a34a28; */
+    /* #8f4426; */
+    /* #f4a548; */
+    /* #cf7500; */
+  
+  }
+  .footer p{
+    margin-top: 10px;
+      font-size: 15px;
+  }
+  .footer{
+  padding-top: 50px;
+   float: right;
+  }
+  .social{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  /*ABOUT US*/
+  .images{
+  float: right;
+  }
+  .About{
+    width: 50%;
+    float: right;
+  
+  }
+  /* p:last-child{
+    padding-bottom: 100px;
+  } */
+  .moon{
+    text-align: center;
+    font-family: 'Merriweather', serif;
+  }
+  /* TERMS AND CONDITION */
+  .term{
+    text-align: center;
+    font-weight: bold;
+    padding-top: 50px;
+    font-family: 'Merriweather', serif;
+  
+  }
+  #conditions{
+      background-image: url("jake-givens-iR8m2RRo-z4-unsplash.jpg");
+  }
+  
+  /* HOMEPAGE */
+  .search{
+    padding-top: 50px;
+    background-color: #f0a500;
+  }
+  
+  .space{
+    margin-left: 30px;
+  }
+  .place{
+      text-align: center;
+      margin-left: 40%;
+      margin-top: 10%;
+  }
+  
+  /* CONTACT US */
+  
+  .contactPage{
+  text-align: center;
+  padding-top: 30px;
+  
+  }
+  .starting{
+    text-align: center;
+    padding-top: 30px;
+  }
+  .contact{
+    text-align: center;
+    font-weight: 500;
+    font-family: 'Merriweather', serif;
+  }
+  
+  h2{
+    text-align: center;
+    font-family: 'Merriweather', serif;
+  }
+  
+  .form-control{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid black;
+  
+  }
+  input[type=FirstName]{
+    text-align: left;
+  }
+  input[type=number]{
+    padding-top: 50px;
+    padding-bottom: 25px;
+  }
+  input[type=Email]{
+      padding-top: 50px;
+        padding-bottom: 25px;
+  }
+  .part2{
+    padding-top: 30px;
+  }
+  
+  #middle-area{
+    padding: 20px 100px 20px;
+    position: relative;
+    z-index: 1;
+  }
+  input{
+    background: transparent !important;
+  }
+  textarea{
+    background: transparent !important;
+  }
+  .box{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .card-body{
+   padding-left: 30px;
+     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+  .classy{
+   margin: 5rem 3.12rem;
+   position: relative;
+   background-color:  #a3d2ca;
+  }
+  .distance{
+    padding: 5% 15% 0;
+  }
+  
+  #texting{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    padding-top: 30px;
+  }
+  .submit{
+    border-radius: 20px;
+    width: 200px;
+  margin-top: 25px;
+  }
+  
+  #pricing{
+   margin: auto;
+   max-width: 800px;
+   /* margin-left: 500px; */
+  }
+  
+  /*SERVICES*/
+  .devu-row{
+    padding-top: 50px;
+  }
+  .self{
+  padding-top: 20px;
+  }
+  
+  .icon:hover{
+    color: #8f4f4f;
+  }
+  
+  .icon2:hover{
+    color: #8f4f4f;
+  }
+  
+  .icon3:hover{
+    color: #8f4f4f;
+  }
+  .hum{
+    padding-bottom: 20px;
+  }
+  /*BILL*/
+  
+  .vl{
+    border-left: 1px solid gray;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    top: 1px;
+    bottom: 1px;
+  }
+  
+  .classic{
+    margin: 5rem 1rem;
+    position: relative;
+  }
+  #bill{
+  margin: auto;
+  max-width: 950px;
+  }
+  
+  .FullName{
+    float: right;
+    width: 50%;
+    margin-right: 150px;
+    border-bottom: 0;
+    padding-bottom: 20px;
+  }
+  

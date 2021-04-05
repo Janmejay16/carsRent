@@ -61,10 +61,16 @@ const Main = styled.div`
     }
 `
 
-const FAQs = () => {
+const FAQs = (props) => {
+    const {isLoggedIn, setLoggedIn, currentUser, setCurrentUser} = props
     return (
         <Main>
-            <Navbar />
+            <Navbar
+                isLoggedIn={isLoggedIn}
+                currentUser={currentUser}
+                setLoggedIn={setLoggedIn}
+                setCurrentUser={setCurrentUser}
+            />
             <div className="main">
                 <Faq>
                     <div className="image"></div>
