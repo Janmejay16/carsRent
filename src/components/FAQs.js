@@ -9,7 +9,7 @@ const Faq = styled.div`
     margin: 3vw auto;
     border-radius: 3vw;
     box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.8);
-    background: rgba(0,0,0,0.3);
+    background: rgb(0,0,0);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,7 +55,7 @@ const Faq = styled.div`
 
 const Main = styled.div`
     width: 100%;
-    background: #ffa900;
+    background: #b2ebf2;
     .main {
         padding-bottom: 3vw;
     }

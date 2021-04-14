@@ -9,7 +9,6 @@ const AboutSection = styled.div`
   width: 100%;
   margin: 0 auto;
   .About {
-    height: 45vw;
     padding: 2vw;
     width: 90%;
     margin: 1vw auto;
@@ -30,6 +29,7 @@ const AboutSection = styled.div`
       margin: 1vw auto;
       text-align: center;
       img {
+        padding-top 3vw;
         width: 100%;
         margin: 0 auto;
       }
