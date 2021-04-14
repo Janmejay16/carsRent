@@ -10,6 +10,7 @@ import Input from '@material-ui/core/Input';
 import Select from '@material-ui/core/Select';
 import {useState, useEffect} from 'react'
 import axios from 'axios'
+import ls from 'local-storage'
 
 const Button = styled.button`
     display: block;
@@ -138,7 +139,10 @@ const SignUpIn = (props) => {
                 console.log(res)
                 if(res.data.success == true) {
                     setLoggedIn(true)
+
                     setCurrentUser(res.data.user)
+                    ls.set('currentUser',res.data.user)
+                    ls.set('loggedIn',true)
                     console.log(res.data.user)
                     if(signInVehicle) {
                         setRole("owner")
@@ -159,6 +163,8 @@ const SignUpIn = (props) => {
                     if(res.data.success==true) {
                         setLoggedIn(true)
                         setCurrentUser(res.data.user)
+                        ls.set('currentUser',res.data.user)
+                        ls.set('loggedIn',true)
                         console.log(res.data.user)
                     }
                 })
@@ -170,6 +176,8 @@ const SignUpIn = (props) => {
                     if(res.data.success==true) {
                         setLoggedIn(true)
                         setCurrentUser(res.data.user)
+                        ls.set('currentUser',res.data.user)
+                        ls.set('loggedIn',true)
                         console.log(res.data.user)
                     }
                 })
@@ -279,6 +287,17 @@ const SignUpIn = (props) => {
                     label="Sign Up as Vehicle Owner"
                 />
                 <div id="vehicleowner" style={{display: (vehicleOwner ? "block" : "none")}}>
+                    {/* Vehicle Type */}
+                    <FormControl style={{width: "90%",margin: "1vw 5%"}}>
+                    <InputLabel id="demo-simple-select-label">Vehicle Type</InputLabel>
+                        <Select
+                            name="vehicleType"
+                            onChange={handleInput}
+                        >
+                            <MenuItem value={"twowheeler"}>Two Wheeler</MenuItem>
+                            <MenuItem value={"fourwheeler"}>Four Wheeler</MenuItem>
+                        </Select>
+                    </FormControl>
                     {/* Model Name */}
                     <TextField
                         name="modelName"

@@ -1,6 +1,7 @@
-import Header from './components/Header'
+import ls from 'local-storage'
 import {useState, useEffect} from 'react'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
+import Header from './components/Header'
 import FAQs from './components/FAQs'
 import Dashboard from './components/Dashboard'
 import Contact from './components/Contact'
@@ -17,6 +18,13 @@ const App = () => {
   const [currentUser,setCurrentUser] = useState({})
   const [location, setLocation] = useState(null)
   const [role, setRole] = useState("user")
+
+  useEffect(() => {
+    if (ls.get('loggedIn') == true) {
+      setCurrentUser(ls.get('currentUser'))
+      setLoggedIn(true)
+    }
+  },[])
 
   return (
     <Router>

@@ -367,6 +367,7 @@ const Header = (props) => {
                 }
             <div className="header">
                 <Navbar
+                    bg="tr"
                     isLoggedIn={isLoggedIn}
                     currentUser={currentUser}
                     setLoggedIn={setLoggedIn}
@@ -500,7 +501,7 @@ const Header = (props) => {
                     }         
                 </div>
             </section>
-            <Footer />
+            <Footer bg="tr" />
         </HeadElem>
     )
 }

@@ -262,6 +262,7 @@ app.post('/register/owner', upload.fields([{
                     mileage: req.body.mileage,
                     fuelType: req.body.fuelType,
                     type: req.body.type,
+                    vehicleType: req.body.vehicleType,
                     location: req.body.location,
                     fk_ownerid: owner.id,
                     vehicleImage: "vehicleImage-"+email.split('.').join(""),

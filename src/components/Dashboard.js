@@ -5,6 +5,7 @@ import Footer from './Footer';
 import Navbar from './Navbar';
 import {useState} from 'react'
 import axios from 'axios'
+import ls from 'local-storage'
 
 const Profile = styled.div`
     width: 80%;
@@ -83,6 +84,8 @@ const Dashboard = (props) => {
     const logout = (e) => {
         setLoggedIn(false)
         setCurrentUser(null)
+        ls.set('loggedIn',false)
+        ls.set('currentUser',null)
         alert('Logged Out!')
     }
 

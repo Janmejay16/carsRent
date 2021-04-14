@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "https://cars-rent-website.herokuapp.com/",
   "dependencies": {
+    "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
@@ -22,6 +23,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "local-storage": "^2.0.0",
     "multer": "^1.4.2",
     "multiparty": "^4.2.2",
     "mysql2": "^2.2.5",

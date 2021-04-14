@@ -4,7 +4,6 @@ import header from '../images/logo2.jpeg'
 
 const Nav = styled.div`
     display: flex;
-    background: rgba(0,0,0,0.3);
     padding: 1vw 0;
     margin: 0;
     width: 100%;
@@ -30,6 +29,7 @@ const Nav = styled.div`
         li {
             width: 10%;
             margin: 0;
+            font-size: 1.6vw;
             a {
                 color: white;
                 text-decoration: none;
@@ -43,9 +43,9 @@ const Nav = styled.div`
 `
 
 const Navbar = (props) => {
-    const {isLoggedIn, setLoggedIn, currentUser, setCurrentUser} = props
+    const {bg ,isLoggedIn, setLoggedIn, currentUser, setCurrentUser} = props
     return(
-        <Nav>
+        <Nav style={{background: (bg=="tr" ? "rgba(0,0,0,0.3)" : ("rgba(81, 196, 211, 1)"))}}>
             <div className="logo">
                 <img src={header} />
             </div>

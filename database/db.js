@@ -31,7 +31,7 @@ const sequelize =new Sequelize( "postgres://axamejuwvwitvy:a2b2e29ccccac5f437560
       dialectOptions: {
           ssl: {
             require: true,
-            rejectUnauthorized: false // <<<<<<< YOU NEED THIS
+            rejectUnauthorized: false
             }
         }   
    });

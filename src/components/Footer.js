@@ -8,9 +8,10 @@ const FooterElem = styled.footer`
     padding: 2vw 0;
     width: 100%;
     margin: 0 auto;
-    background: rgba(0,0,0,0.2);
-    background-size: cover;
-    background-repeat: no-repeat;
+    // background: rgba(0,0,0,0.2);
+    background: rgba(81, 196, 211, 0.6);
+    // background-size: cover;
+    // background-repeat: no-repeat;
     .top {
         width: 60%;
         margin: 1vw auto;
@@ -83,9 +84,10 @@ const FooterElem = styled.footer`
     }
 `
 
-const Footer = () => {
+const Footer = (props) => {
+    const {bg} = props
     return (
-        <FooterElem>
+        <FooterElem  style={{background: (bg=="tr" ? "rgba(0,0,0,0.3)" : ("rgba(81, 196, 211, 1)"))}}>
             {/* Top Links Element */}
             <div className="top">
                 <div className="lists">
