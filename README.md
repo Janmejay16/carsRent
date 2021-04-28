@@ -80,5 +80,5 @@ The popups have been set using 'props' by passing them withing the files from th
 * setPopupAdm : function to show popup based of the Admission Form on value (boolean)
 * setPopupApp : function to show popup based of the Appointment Form on value (boolean)
 
-### useLayoutEffect
-This layout is used to open the page from the top
+### LayoutEffect for window scroll to top
+* useLayoutEffect : This layout is used to open the page from the top
