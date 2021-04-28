@@ -69,3 +69,6 @@ This project is created using ReactJs framework and it is built strictly using R
       ├── robots.txt
       └── images (different logos)
   ```
+
+## Styling
+The styling rules have been placed in the respected files. CSS is used with the help of styled-components module. The files have been properly commented and styled.
