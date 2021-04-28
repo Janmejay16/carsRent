@@ -40,8 +40,9 @@ This project is created using ReactJs framework and it is built strictly using R
   |   |   │   ├── AboutCrypto.js *** Section for crypto
   |   |   │   ├── WhyChooseUs.js *** Section for Why CHoose Us
   |   |   │   └── AboutHeader.js *** AboutUs Header Section
-  |   │   ├── AboutUs
   |   │   └── Forms
+  |   |   │   ├── Appointment.js *** Appointment Form
+  |   |   │   └── Admission.js *** Admission Form
   │   └── images *** contains all images to be used in the project
   └── public
       ├── favicon.ico *** Favicon icon displayed beside the title
