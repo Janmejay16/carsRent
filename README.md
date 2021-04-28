@@ -72,3 +72,8 @@ This project is created using ReactJs framework and it is built strictly using R
 
 ## Styling
 The styling rules have been placed in the respected files. CSS is used with the help of styled-components module. The files have been properly commented and styled.
+
+## Popup for Admission and Appointment
+The popups have been set using 'props' by passing them withing the files from the App.js file.
+* popupAdm, setPopupAdm : function to show popup based of the Admission Form on value (boolean)
+* popupApp, setPopupApp : function to show popup based of the Appointment Form on value (boolean)
