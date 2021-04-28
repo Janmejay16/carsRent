@@ -41,9 +41,27 @@ This project is created using ReactJs framework and it is built strictly using R
   |   |   │   ├── WhyChooseUs.js *** Section for Why CHoose Us
   |   |   │   └── AboutHeader.js *** AboutUs Header Section
   |   │   └── Forms
-  |   |   │   ├── Appointment.js *** Appointment Form
-  |   |   │   └── Admission.js *** Admission Form
+  |   |       ├── Appointment.js *** Appointment Form
+  |   |       └── Admission.js *** Admission Form
   │   └── images *** contains all images to be used in the project
+  |   │   ├── alummi
+  |   │   ├── ambulance *** ambulance (white, gray, red)
+  |   │   ├── benefit *** icons for benefit section
+  |   │   ├── blog *** images for blog, news
+  |   │   ├── caret *** (black, white)
+  |   │   ├── course_icons *** duration, medal icon for course section
+  |   │   ├── courses *** images for different courses
+  |   │   ├── doctorpanel *** doctor images
+  |   │   ├── headers *** bg images for headers in all pages
+  |   │   ├── heading_icons *** icons for headings (our world class services, doctor panel, latest news, etc)
+  |   │   ├── icons_specality *** icons for speciality (pill, help, question, bone, baby, etc)
+  |   │   ├── logo *** (dark, white)
+  |   │   ├── online_doctors *** (doctors circle profile photos for online doctors section)
+  |   │   ├── placement *** placement partners
+  |   │   ├── service_tabs *** tabs section in service page
+  |   │   ├── services *** service section images (OPD etc...)
+  |   │   ├── whychooseus *** why choose us section in about us page
+  |   │   └── social *** social icons in footer
   └── public
       ├── favicon.ico *** Favicon icon displayed beside the title
       ├── index.html *** index file which is rendered in the view
