@@ -280,7 +280,7 @@ app.post('/register/owner', upload.fields([{
                 .then(vehicle => {
                     res.status(200).json({
                         success: true,
-                        owner: owner
+                        user: owner
                     })
                 })
             })

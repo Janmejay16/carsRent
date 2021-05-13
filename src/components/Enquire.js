@@ -8,17 +8,18 @@ import Dashboard from './Dashboard'
 
 const Form = styled.div`
     width: 60%;
+    background: white;
     margin: 0 auto;
     padding: 2vw 0;
     margin: 2vw auto;
     border-radius: 2vw;
-    box-shadow: 1px 2px 2px 2px #666;
+    box-shadow: inset 1px 1px 2px 2px #666;
     text-align: center;
     button {
         border: none;
         border-radius: 2vw;
         color: white;
-        background: #ffa900;
+        background: #373737;
         padding: 1vw 2vw;
         color: white;
         cursor: pointer;

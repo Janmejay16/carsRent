@@ -16,10 +16,11 @@ const Button = styled.button`
     display: block;
     width: 10%;
     margin: 1vw auto;
-    background: #ffa900;
+    background: #fff;
     border: none;
     border-radius: 1vw;
-    color: white;
+    color: black;
+    cursor: pointer;
     font-weight: 700;
     font-size: 1vw;
     padding: 0.5vw 2vw;
@@ -27,9 +28,10 @@ const Button = styled.button`
 
 const Form = styled.div`
     padding: 2vw;
+    background: white;
     width: 70%;
     margin: 3vw auto;
-    border: 3px solid rgb(255,169,0);
+    border: 3px solid #000;
     border-radius: 1vw;
     .upload {
         margin: 2vw auto;
@@ -50,7 +52,7 @@ const Form = styled.div`
                 margin: 1vw auto;
                 cursor: pointer;
                 padding: 1vw 2vw;
-                background: #ffa900;
+                background: #373737;
                 border-radius: 1vw;
             }
         }
@@ -138,8 +140,8 @@ const SignUpIn = (props) => {
             .then(res => {
                 console.log(res)
                 if(res.data.success == true) {
-                    setLoggedIn(true)
                     setCurrentUser(res.data.user)
+                    setLoggedIn(true)
                     ls.set('currentUser',res.data.user)
                     ls.set('loggedIn',true)
                     console.log(res.data.user)
@@ -195,8 +197,8 @@ const SignUpIn = (props) => {
                 setCurrentUser={setCurrentUser}
             />
             <Choice className="forms">
-                <button id="left" style={{background: (signIn ? "rgba(150,150,150,0.1" : "#ffa900"), color: (signIn ? "black" : "white")}} onClick={() => setSignIn(false)}>Sign Up</button>
-                <button id="right" style={{background: (signIn ? "#ffa900" : "rgba(150,150,150,0.1"), color: (signIn ? "white" : "black")}} onClick={() => setSignIn(true)}>Sign In</button>
+                <button id="left" style={{background: (!signIn ? "#fff" : "#000"), color: (!signIn ? "black" : "white")}} onClick={() => setSignIn(false)}>Sign Up</button>
+                <button id="right" style={{background: (!signIn ? "#000" : "#fff"), color: (!signIn ? "white" : "black")}} onClick={() => setSignIn(true)}>Sign In</button>
             </Choice>
             <Form style={{display: (signIn ? "none" : "block")}}>
                 {/* Name */}
