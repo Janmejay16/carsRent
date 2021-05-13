@@ -8,11 +8,13 @@ import axios from 'axios'
 import ls from 'local-storage'
 
 const Profile = styled.div`
+    background: #171717;
     width: 80%;
     margin: 2vw auto;
     padding: 3vw;
     border-radius: 2vw;
     box-shadow: 2px 3px 4px 2px rgba(0,0,0,0.6);
+    color: white;
     h2 {
         display: inline-block;
         width: 40%;
@@ -33,12 +35,23 @@ const Profile = styled.div`
             margin: 0.5vw auto;
         }
         display: inline-block;
-        width: 35%;
-        margin: 2vw 5%;
+        width: 17vw;
+        margin: 2vw auto;
         img {
             margin: 1vw auto;
-            width: 100%;
+            max-width: 15vw;
+            height: 15vw;
         }
+    }
+    button {
+        margin: 1vw 2vw;
+        background: rgba(0,0,0,1);
+        color: white;
+        border-radius: 1vw;
+        border: none;
+        font-size: 1.4vw;
+        padding: 0.5vw 1vw;
+        cursor: pointer;
     }
 `
 const Notf = styled.div`
@@ -90,12 +103,18 @@ const Dashboard = (props) => {
     }
 
     const fetchNotifications = () => {
-        role=="user" ? 
+        console.log(currentUser)
+        role!="owner" ? 
         (axios.get('/notifications/'+currentUser.id)
         .then(res => {
             console.log(res.data)
-            setNotifications(res.data)
-            setNotify(true)
+            if (res.data!=[]) {
+                setNotifications(res.data)
+                setNotify(true)
+            }
+            else {
+                alert('No Notifications received!')
+            }
         }))
         :
         (axios.get('/enquiries/'+currentUser.id)
@@ -158,13 +177,13 @@ const Dashboard = (props) => {
                         if (key=="id" || key=="password") {
                             return ""
                         }
-                        if (images.includes(key)) {
+                        // if (images.includes(key)) {
 
-                            return <div className="image">
-                                <h4>{key}</h4>
-                                <img src={`/uploads/${value}.png`} alt={key} />
-                                </div>
-                        }
+                        //     return <div className="image">
+                        //         <h4>{key}</h4>
+                        //         <img src={`/uploads/${value}.png`} alt={key} />
+                        //         </div>
+                        // }
 
                         else {
                             return <h2><span>{key} : </span>{value}</h2>

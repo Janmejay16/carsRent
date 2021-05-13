@@ -8,15 +8,18 @@ import {faEnvelope, faPhoneAlt, faMapMarkerAlt} from '@fortawesome/free-solid-sv
 import TextField from '@material-ui/core/TextField';
 
 const Con = styled.div`
+background: #171717;
+color: white;
 .contactPage{
     text-align: center;
     padding: 2vw 3vw;
     }
     .c-row {
+        background: white;
         height: 35vw;
         width: 70%;
         margin: 1vw auto;
-        box-shadow: 1px 2px 2px 1px #999;
+        box-shadow: inset 1px 1px 4px 2px #000;
         border-radius: 3vw;
         margin: 5vw auto;
         display: flex;
@@ -34,7 +37,7 @@ const Con = styled.div`
         }
     }
     #middle-area {
-        background: #51c4d3;
+        background: #222;
         text-align: left;
         color:  #f9f3f3;
         align-items: flex-start;
@@ -67,7 +70,7 @@ const Contact = (props) => {
     return (
     <Con>
         <Navbar />
-        <h1 class="contactPage">Contact Us</h1>
+        {/* <h1 class="contactPage">Contact Us</h1> */}
         <div class="c-row">
             <section id="middle-area">
                 <p class="hum"> <FontAwesomeIcon icon={faMapMarkerAlt} />&nbsp;&nbsp;2912 Meadowbrook Road,&nbsp;Los Angelas,CA,&nbsp;90017
@@ -78,7 +81,7 @@ const Contact = (props) => {
                 <p class="hum"><FontAwesomeIcon icon ={faPhoneAlt} />&nbsp;&nbsp;310-386-1234   </p>
             </section>
 
-            <svg id="hori" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#51c4d3" fill-opacity="1"d="M0,160L48,181.3C96,203,192,245,288,261.3C384,277,480,267,576,234.7C672,203,768,149,864,117.3C960,85,1056,75,1152,101.3C1248,128,1344,192,1392,224L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+            <svg id="hori" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#222" fill-opacity="1"d="M0,160L48,181.3C96,203,192,245,288,261.3C384,277,480,267,576,234.7C672,203,768,149,864,117.3C960,85,1056,75,1152,101.3C1248,128,1344,192,1392,224L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
 
             <section id="pricing">
                 <h2>Send Message</h2>

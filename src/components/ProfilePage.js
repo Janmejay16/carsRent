@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const Profile = styled.div`
+    background: #171717;
     width: 80%;
     margin: 2vw auto;
     padding: 3vw;

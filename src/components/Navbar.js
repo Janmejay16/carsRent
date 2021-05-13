@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
-import header from '../images/logo2.jpeg'
+import header from '../images/logo.png'
 
 const Nav = styled.div`
     display: flex;
@@ -27,15 +27,20 @@ const Nav = styled.div`
         align-items: center;
         list-style: none;
         li {
-            width: 10%;
             margin: 0;
-            font-size: 1.6vw;
+            font-size: 1.2vw;
             a {
+                padding: 0.3vw 0;
                 color: white;
                 text-decoration: none;
                 &:active {
                     color: white;
                     text-decoration: none;
+                }
+            }
+            &:hover {
+                a {
+                    border-bottom: 0.07vw solid white;
                 }
             }
         }
@@ -45,16 +50,15 @@ const Nav = styled.div`
 const Navbar = (props) => {
     const {bg ,isLoggedIn, setLoggedIn, currentUser, setCurrentUser} = props
     return(
-        <Nav style={{background: (bg=="tr" ? "rgba(0,0,0,0.3)" : ("rgba(81, 196, 211, 1)"))}}>
+        <Nav style={{background:"transparent"}}>
+        {/* <Nav> */}
             <div className="logo">
                 <img src={header} />
             </div>
             <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About Us</Link></li>
-                <li><Link to="/services">Services</Link></li>
-                <li><Link to="/faq">FAQs</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
+                {/* <li><Link to="/contact">Contact</Link></li> */}
                 <li><Link to="/account">{(isLoggedIn ? "Hi, "+currentUser.name : "Login")}</Link></li>
             </ul>
         </Nav>

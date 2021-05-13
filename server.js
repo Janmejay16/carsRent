@@ -96,17 +96,22 @@ app.get('/enquiries/:id', (req,res) => {
     id = req.params.id
     Enquiry.findOne({ where: {owner_id: id}})
     .then(enquiry => {
-        Vehicles.findOne({ where: {vehicleId: enquiry.vehicle_id}})
-        .then(vehicle => {
-            res.json({
-                modelName: vehicle.modelName,
-                requiredDate: enquiry.requiredDate,
-                returnDate: enquiry.returnDate,
-                pickupLocation: enquiry.pickupLocation,
-                user_id: enquiry.user_id,
-                enquiry_id: enquiry.id
+        if (enquiry) {
+            Vehicles.findOne({ where: {vehicleId: enquiry.vehicle_id}})
+            .then(vehicle => {
+                res.json({
+                    modelName: vehicle.modelName,
+                    requiredDate: enquiry.requiredDate,
+                    returnDate: enquiry.returnDate,
+                    pickupLocation: enquiry.pickupLocation,
+                    user_id: enquiry.user_id,
+                    enquiry_id: enquiry.id
+                })
             })
-        })
+        }
+        else {
+            res.json({success: false})
+        }
     })
 })
 
@@ -141,12 +146,13 @@ app.get('/notifications/:id', (req,res) => {
     id = req.params.id
     Notification.findOne({ where: {user_id: id}})
     .then(notification => {
-        User.findOne({ where: {id: id}})
-        .then(user => {
+        if (notification!=null) {
             Enquiry.findOne({ where: {id: notification.enquiry_id}})
             .then(enquiry => {
+                console.log(enquiry)
                 Vehicles.findOne({ where: {vehicleId: enquiry.vehicle_id}})
                 .then(vehicle => {
+                    console.log(vehicle)
                     res.json({
                         message: notification.status,
                         modelName: vehicle.modelName,
@@ -156,7 +162,10 @@ app.get('/notifications/:id', (req,res) => {
                     })
                 })
             })
-        })
+        }
+        else {
+            res.send([])
+        }
     })
 })
 
@@ -221,6 +230,7 @@ app.post('/register/owner', upload.fields([{
   }, {
     name: 'vehicleImage', maxCount: 1
   }]) ,(req,res) => {
+      console.log(req.body)
     VehicleOwner.findOne({
         where: Sequelize.or(
             {email: req.body.email},
@@ -276,6 +286,10 @@ app.post('/register/owner', upload.fields([{
             })
         }
     })
+})
+// Test
+app.get('/try', (req,res) => {
+    res.send('Yes, its localhost:5000 running!')
 })
 
 // User Login

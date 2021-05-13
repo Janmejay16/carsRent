@@ -21,6 +21,7 @@ const Form = styled.div`
         background: #ffa900;
         padding: 1vw 2vw;
         color: white;
+        cursor: pointer;
         font-weight: 600;
     }
 `
@@ -146,7 +147,7 @@ const Enquire = (props) => {
                             value={details.location}
                             style={{width: "35%",margin: "2vw 7.5%"}}
                             variant="outlined"
-                            label="Message"
+                            label="Location"
                             id="outlined-size-small"
                             size="small"
                             placeholder="Location"

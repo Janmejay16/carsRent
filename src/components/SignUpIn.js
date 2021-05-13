@@ -130,7 +130,7 @@ const SignUpIn = (props) => {
     }
 
     const handleSubmit = e => {
-        // console.log(details)
+        console.log(details)
         if(signIn) {
             details["user"] = (signInVehicle ? "vehicleowner" : "user")
             // console.log(details)
@@ -139,7 +139,6 @@ const SignUpIn = (props) => {
                 console.log(res)
                 if(res.data.success == true) {
                     setLoggedIn(true)
-
                     setCurrentUser(res.data.user)
                     ls.set('currentUser',res.data.user)
                     ls.set('loggedIn',true)
@@ -161,8 +160,8 @@ const SignUpIn = (props) => {
                 .then(res => {
                     console.log(res)
                     if(res.data.success==true) {
-                        setLoggedIn(true)
                         setCurrentUser(res.data.user)
+                        setLoggedIn(true)
                         ls.set('currentUser',res.data.user)
                         ls.set('loggedIn',true)
                         console.log(res.data.user)
@@ -174,8 +173,8 @@ const SignUpIn = (props) => {
                 .then(res => {
                     console.log(res)
                     if(res.data.success==true) {
-                        setLoggedIn(true)
                         setCurrentUser(res.data.user)
+                        setLoggedIn(true)
                         ls.set('currentUser',res.data.user)
                         ls.set('loggedIn',true)
                         console.log(res.data.user)

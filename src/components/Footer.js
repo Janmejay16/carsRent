@@ -8,8 +8,7 @@ const FooterElem = styled.footer`
     padding: 2vw 0;
     width: 100%;
     margin: 0 auto;
-    // background: rgba(0,0,0,0.2);
-    background: rgba(81, 196, 211, 0.6);
+    background: #373737;
     // background-size: cover;
     // background-repeat: no-repeat;
     .top {
@@ -87,7 +86,7 @@ const FooterElem = styled.footer`
 const Footer = (props) => {
     const {bg} = props
     return (
-        <FooterElem  style={{background: (bg=="tr" ? "rgba(0,0,0,0.3)" : ("rgba(81, 196, 211, 1)"))}}>
+        <FooterElem>
             {/* Top Links Element */}
             <div className="top">
                 <div className="lists">
@@ -112,7 +111,7 @@ const Footer = (props) => {
 
             {/* Bottom Copyright Element */}
             <div className="bottom">
-                <p>Copyright 2021 &copy; All Right Reserved. Rent-A-Ride, Vadodara, India. Developed By Devanshi Patel and Janmejay Shastri.</p>
+                <p>Copyright 2021 &copy; All Right Reserved. Rent-A-Ride, Vadodara, India.</p>
             </div>
         </FooterElem>
     )

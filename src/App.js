@@ -8,6 +8,7 @@ import Contact from './components/Contact'
 import About from './components/about'
 import Services from './components/services'
 import Enquire from './components/Enquire'
+import axios from 'axios'
 
 const App = () => {
       
@@ -54,14 +55,14 @@ const App = () => {
         />}
       />
       
-      <Route exact path="/faq" component={
+      {/* <Route exact path="/faq" component={
         () => <FAQs
           isLoggedIn={isLoggedIn}
           currentUser={currentUser}
           setLoggedIn={setLoggedIn}
           setCurrentUser={setCurrentUser}
         />} 
-      />
+      /> */}
 
       <Route exact path="/enquire" component={
         () => <Enquire
@@ -76,14 +77,14 @@ const App = () => {
         />} 
       />
       
-      <Route exact path="/contact" component={
+      {/* <Route exact path="/contact" component={
         () => <Contact
           isLoggedIn={isLoggedIn}
           currentUser={currentUser}
           setLoggedIn={setLoggedIn}
           setCurrentUser={setCurrentUser}
         />} 
-      />
+      /> */}
       
       <Route exact path="/about" component={
         () => <About
@@ -94,14 +95,14 @@ const App = () => {
         />} 
       />
 
-      <Route exact path="/services" component={
+      {/* <Route exact path="/services" component={
         () => <Services
           isLoggedIn={isLoggedIn}
           currentUser={currentUser}
           setLoggedIn={setLoggedIn}
           setCurrentUser={setCurrentUser}
         />} 
-      />
+      /> */}
     </Router>
   )
 }

@@ -22,6 +22,7 @@ import ProfilePage from './ProfilePage'
 import axios from 'axios'
 
 const HeadElem = styled.div`
+    color: white;
     .popup {
         position: fixed;
         height: 90vh;
@@ -124,14 +125,16 @@ const HeadElem = styled.div`
 
         .search {
             width: 35%;
-            margin: 30vh auto 0 57vw;
+            color: black;
+            margin: 33vw auto 0 55vw;
             display: flex;
             align-items: center;
             text-align: left;
             justify-content: center;
-            padding: 0 2vw;
-            background: rgba(255,255,255,0.6);
-            font-size: 1.6vw;
+            padding: 0.5vw 2vw 0 2vw;
+            border-radius: 5vw;
+            background: rgba(255,255,255,0.5);
+            font-size: 2vw;
         }
     }
     section {
@@ -143,6 +146,7 @@ const HeadElem = styled.div`
             padding: 0 2vw;
             width: 20%;
             margin: 2vw 0;
+            color: #afafaf;
             .item {
                 margin: 3vw auto;
                 h5 {
@@ -162,12 +166,13 @@ const HeadElem = styled.div`
             justify-content: flex-start;
             .item {
                 width: 20%;
+                height: 24vw;
                 margin: 1vw 0 1vw 4%;
                 display: flex;
                 flex-direction: column;
                 padding: 0 0 1vw 0;
                 border-radius: 10px;
-                border: 1px solid black;
+                box-shadow: inset 0px 0.5px 2px 0.5px black;
                 .image {
                     width: 100%;
                     margin-bottom: 1vw;
@@ -183,11 +188,11 @@ const HeadElem = styled.div`
                     font-weight: 700;
                     margin: 0.1vw 0;
                     padding: 0 1vw;
-                    color: #666;
+                    color: #777;
                     span {
                         display: inline-block;
                         width: 50%;
-                        color: black;
+                        color: white;
                     }
                 }
                 h1 {
@@ -220,6 +225,10 @@ const Header = (props) => {
         setLocation(e.target.value)
     }
 
+    useEffect(() => {
+
+    },[location])
+
     const [cars, setCars] = useState([])
 
     const seeDetails = (id) => {
@@ -249,93 +258,68 @@ const Header = (props) => {
             setCars(records.data)
             console.log(records.data)
         })
-    },[])
+    },[filters])
 
 
-    const handleTwoWheel = e => {
-        if (e.target.checked) {
-            var arr = twoWheel
-            arr.push(e.target.name)
-            setTwowheel(arr)
-            // console.log("Twowheel : ",twoWheel, twoWheel.length)
-        }
-        else {
-            var index = twoWheel.indexOf(e.target.name)
-            twoWheel.splice(index,1)
-            // console.log("Twowheel : ",twoWheel, twoWheel.length)
-        }
-    }
-    const handleFourWheel = e => {
-        if (e.target.checked) {
-            fourWheel.push(e.target.name)
-            // console.log("Fourwheel : ",fourWheel, fourWheel.length)
-        }
-        else {
-            var index = fourWheel.indexOf(e.target.name)
-            fourWheel.splice(index,1)
-            // console.log("Fourwheel : ",fourWheel, fourWheel.length)
-        }
-    }
-    const handleSeats = e => {
-        if (e.target.checked) {
-            seats.push(e.target.name)
-            // console.log("Seats : ",seats, seats.length)
-        }
-        else {
-            var index = seats.indexOf(e.target.name)
-            seats.splice(index,1)
-            // console.log("Seats : ",seats, seats.length)
-        }
-    }
+    // const handleTwoWheel = e => {
+    //     if (e.target.checked) {
+    //         var arr = twoWheel
+    //         arr.push(e.target.name)
+    //         setTwowheel(arr)
+    //         // console.log("Twowheel : ",twoWheel, twoWheel.length)
+    //     }
+    //     else {
+    //         var index = twoWheel.indexOf(e.target.name)
+    //         twoWheel.splice(index,1)
+    //         // console.log("Twowheel : ",twoWheel, twoWheel.length)
+    //     }
+    // }
+    // const handleFourWheel = e => {
+    //     if (e.target.checked) {
+    //         var arr=fourWheel
+    //         arr.push(e.target.name)
+    //         setFourwheel(arr)
+    //         // console.log("Fourwheel : ",fourWheel, fourWheel.length)
+    //     }
+    //     else {
+    //         var index = fourWheel.indexOf(e.target.name)
+    //         fourWheel.splice(index,1)
+    //         // console.log("Fourwheel : ",fourWheel, fourWheel.length)
+    //     }
+    // }
+    // const handleSeats = e => {
+    //     if (e.target.checked) {
+    //         seats.push(e.target.name)
+    //         // console.log("Seats : ",seats, seats.length)
+    //     }
+    //     else {
+    //         var index = seats.indexOf(e.target.name)
+    //         seats.splice(index,1)
+    //         // console.log("Seats : ",seats, seats.length)
+    //     }
+    // }
 
     const filterString = car => {
         var res = false;
         if(car.location.toLowerCase() == location) {
             if (filters.twowheeler == true && filters.fourwheeler==false) {
-                if (twoWheel.length>0) {
-                    if(twoWheel.includes(car.modelName)) {
-                        console.log(459)
-                        res = true
-                    }
-                    else {
-                        return false
-                    }
-                }
-                else if (twoWheel.length==0 && car.vehicleType=="twowheeler") {
-                    console.log(467)
-                    res = true
-                }
-            }
-            else if (filters.twowheeler == true && filters.fourwheeler==true) {
-                if (twoWheel.length==0 && fourWheel.length==0) {
-                    return true
-                }
-                else if(twoWheel.includes(car.modelName) || (fourWheel.includes(car.modelName)|| seats.includes(car.seats))) {
-                    console.log(473)
+                if(car.vehicleType=="twowheeler") {
                     res = true
                 }
                 else {
-                    console.log("False, ",477)
-                    res = false
+                    return false
                 }
             }
             else if (filters.twowheeler == false && filters.fourwheeler==true) {
-                if (seats.length==0 && fourWheel.length==0 && car.vehicleType=="fourwheeler") {
-                    console.log(483)
-                    res = true
-                }
-                else if (fourWheel.length>0 && fourWheel.includes(car.modelName)) {
-                    console.log(487)
-                    res = true
-                }
-                else if (seats.length>0 && seats.includes(car.seats.toString())) {
-                    console.log(491)
+                if(car.vehicleType=="fourwheeler") {
                     res = true
                 }
                 else {
-                    console.log("False, ", 495)
-                    res = false
+                    return false
                 }
+            }
+            else if (filters.twowheeler == true && filters.fourwheeler==true) {
+                res = true
             }
             else if (filters.twowheeler == false && filters.fourwheeler==false) {
                 res = true
@@ -375,10 +359,11 @@ const Header = (props) => {
                 />
                 <div className="search">
                     <FontAwesomeIcon icon={faMapMarkerAlt} />
-                    <FormControl style={{width: "90%",margin: "0 auto 1vw 5%", padding: "0 1vw"}}>
+                    <FormControl style={{width: "80%",margin: "0 auto 1vw 10%", padding: "0"}}>
                     <InputLabel id="demo-simple-select-label">Location</InputLabel>
                         <Select
                             name="location"
+                            value={location}
                             onChange={handleInput}
                         >
                             <MenuItem value={"goa"}>Goa</MenuItem>
@@ -405,7 +390,7 @@ const Header = (props) => {
                             <input onChange={handleCheck} value={filters.fourwheeler} id="fourwheeler" name="fourwheeler" type="checkbox"/>
                         </div>
                     </div>
-                    <div style={{display: (filters.twowheeler ? "block" : "none"),borderTop: "2px solid black"}} className="item">
+                    {/* <div style={{display: (filters.twowheeler ? "block" : "none"),borderTop: "2px solid black"}} className="item">
                         <h5>2-Wheeler Models</h5>
                         <div className="check">
                             <label for="activa">Activa 5G</label>
@@ -423,8 +408,8 @@ const Header = (props) => {
                             <label for="bullet">Royal Enfield</label>
                             <input onChange={handleTwoWheel} id="bullet" name="bullet" type="checkbox"/>
                         </div>
-                    </div>
-                    <div style={{display: (filters.fourwheeler ? "block" : "none"),borderTop: "2px solid black"}} className="item">
+                    </div> */}
+                    {/* <div style={{display: (filters.fourwheeler ? "block" : "none"),borderTop: "2px solid black"}} className="item">
                         <h5>4-Wheeler Models</h5>
                         <div className="check">
                             <label for="wagonr">WagonR</label>
@@ -458,8 +443,8 @@ const Header = (props) => {
                             <label for="jeep">Jeep</label>
                             <input onChange={handleFourWheel} id="jeep" name="jeep" type="checkbox"/>
                         </div>
-                    </div>
-                    <div style={{display: (filters.fourwheeler ? "block" : "none"),borderTop: "2px solid black"}} className="item">
+                    </div> */}
+                    {/* <div style={{display: (filters.fourwheeler ? "block" : "none"),borderTop: "2px solid black"}} className="item">
                         <h5>Number of Seats</h5>
                         <div className="check">
                             <label for="five">Five</label>
@@ -477,14 +462,12 @@ const Header = (props) => {
                             <label for="eight">Eight</label>
                             <input onChange={handleSeats} id="eight" name="8" type="checkbox"/>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="cars">
                     {
                         cars.map((car,index) => (
-                            filterString(car) ?
-                            (
-                            <div className="item" onClick={() => seeDetails(car.fk_ownerid)}>
+                            <div style={{display: filterString(car) ? "flex" : "none"}} className="item" onClick={() => seeDetails(car.fk_ownerid)}>
                                 <div className="image">
                                     <img src={`/uploads/${car.vehicleImage}.png`} />
                                 </div>
@@ -495,9 +478,8 @@ const Header = (props) => {
                                 <h3 className="fuel"><span>Fuel Type :</span> {car.fuelType}</h3>
                                 <h3 className="type"><span>Type :</span> {car.type}</h3>
                                 <h4 className="location"><span>Location :</span> {car.location}</h4>
-                            </div>
-                            ) : ""
-                        ))  
+                            </div>)
+                        )  
                     }         
                 </div>
             </section>
